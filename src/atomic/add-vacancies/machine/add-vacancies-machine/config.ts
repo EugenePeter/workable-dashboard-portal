@@ -62,6 +62,14 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 							},
 						},
 					},
+					step_two: {
+						id: 'step_two',
+						on: {
+							ON_FIELD_UPDATE: {
+								actions: ['assignFieldValueToContext']
+							},
+						},
+					},
 				},
 			},
 			done: {},

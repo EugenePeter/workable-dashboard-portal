@@ -3,6 +3,7 @@ import { useInterpret, useActor } from '@xstate/react';
 import { IContext } from './types';
 import config from './config';
 import options from './options';
+import { fields_3 } from './data';
 
 const default_context: IContext = {
 	application_config: {
@@ -11,30 +12,61 @@ const default_context: IContext = {
 				label: 'vacancy',
 				required: true,
 				place_holder: 'enter vacancy',
-				name: 'vacancy'
+				name: 'vacancy',
 			},
 			location: {
 				label: 'location',
 				required: true,
-				place_holder: 'enter lcoation',
-				name: 'location'
+				place_holder: 'enter location',
+				name: 'location',
 			},
 			position_type: {
 				label: 'position type',
 				required: true,
 				place_holder: 'enter position type',
-				name: 'position_type'
+				name: 'position_type',
 			},
 			job_category: {
 				label: 'job category',
 				required: true,
 				place_holder: 'enter pick job category',
-				name: 'job_category'
+				name: 'job_category',
 			},
 		},
+		fields_3,
+		fields2: [
+			{
+				label: 'vacancy',
+				required: true,
+				place_holder: 'enter vacancy',
+				name: 'vacancy',
+				value: null,
+			},
+			{
+				label: 'location',
+				required: true,
+				place_holder: 'enter location',
+				name: 'location',
+				value: null,
+			},
+			{
+				label: 'position type',
+				required: true,
+				place_holder: 'enter position type',
+				name: 'position_type',
+				value: null,
+			},
+			{
+				label: 'job category',
+				required: true,
+				place_holder: 'enter pick job category',
+				name: 'job_category',
+				value: null,
+			},
+		],
 	},
 	application_data: {
-		field_values: {
+		field_value: {
 			vacancy: null,
 			location: null,
 			position_type: null,
@@ -54,7 +86,7 @@ export const spawn = (context: Partial<IContext>) => {
 	return createMachine(machine_config, options);
 };
 
-export const useClever = (machine:any) => {
+export const useClever = (machine: any) => {
 	const recordService = useInterpret(machine);
 	const [state, send] = useActor<ActorRef<any, any>>(recordService);
 	const { context = {} } = state;

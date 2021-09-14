@@ -45,7 +45,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			setInputActive(false);
 			setLabelClick(false);
 		}
-	}, [value])
+	}, [value]);
 
 	const handleBlurInput = () => {
 		if (value === '' || null || undefined) {
@@ -56,10 +56,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 
 	return (
 		<InputContainer>
-			<Label
-				is_input_active={is_input_active}
-				onClick={handleLabelClick}
-			>
+			<Label is_input_active={is_input_active} onClick={handleLabelClick}>
 				{label}
 			</Label>
 			<Input
@@ -110,7 +107,7 @@ export const Label = styled.label<LabelProps>`
 	}
 `;
 
-export const InputContainer = styled.label`
+export const InputContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

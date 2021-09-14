@@ -9,8 +9,8 @@ const actions: ActionFunctionMap<IContext, any> = {
 			const { value, name } = payload;
 			return {
 				...application_data,
-				field_values: {
-					...application_data.field_values,
+				field_value: {
+					...application_data.field_value,
 					[name]: value,
 				},
 			};

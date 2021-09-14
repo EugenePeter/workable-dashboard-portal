@@ -19,6 +19,12 @@ interface Itabs {
 	application_name: string;
 }
 
+interface Steps {
+	step_one: [];
+	step_two: [];
+	step_three: [];
+}
+
 export interface IContext {
 	application_config: {
 		fields: {
@@ -31,7 +37,7 @@ export interface IContext {
 			location: {
 				label: 'location';
 				required: true;
-				place_holder: 'enter lcoation';
+				place_holder: 'enter location';
 				name: 'location';
 			};
 			position_type: {
@@ -47,9 +53,40 @@ export interface IContext {
 				name: 'job_category';
 			};
 		};
+		fields_3: {};
+		fields2: [
+			{
+				label: 'vacancy';
+				required: true;
+				place_holder: 'enter vacancy';
+				name: 'vacancy';
+				value: '' | null;
+			},
+			{
+				label: 'location';
+				required: true;
+				place_holder: 'enter location';
+				name: 'location';
+				value: '' | null;
+			},
+			{
+				label: 'position type';
+				required: true;
+				place_holder: 'enter position type';
+				name: 'position_type';
+				value: '' | null;
+			},
+			{
+				label: 'job category';
+				required: true;
+				place_holder: 'enter pick job category';
+				name: 'job_category';
+				value: '' | null;
+			}
+		];
 	};
 	application_data: {
-		field_values: {
+		field_value: {
 			vacancy: null | string;
 			location: null | string;
 			position_type: null | string;

@@ -8,8 +8,8 @@ import {
 	Wrapper,
 	BottomToolbar,
 } from './styles';
-import { StepsIndicator} from '../../global-components/index';
-import {AddVacanciesForm} from './components'
+import { StepsIndicator } from '../../global-components/index';
+import { AddVacanciesForm } from './components';
 // import { FormInput } from '../../../../global-components';
 
 const AddVacancies = () => {
