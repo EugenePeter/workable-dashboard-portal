@@ -1,2 +1,2 @@
 export { default as StepsIndicator } from './step-indicator';
-export { default as AddVacanciesForm } from './add-vacancies-form';
+export { default as AddVacancies } from './add-vacancies';

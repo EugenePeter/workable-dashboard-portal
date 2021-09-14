@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { ApplicationMapper } from '../../global-components';
 import styled from 'styled-components';
-
 import 'react-tabs/style/react-tabs.css';
 
 export interface Idata {
@@ -15,8 +14,15 @@ export interface Idata {
 }
 export interface CleverTabsProps<T> {
 	data: T;
-	component: any;
+	component: any
 }
+
+export interface ITabs {
+	application_id: string;
+	application_name: string;
+	component_name: string;
+}
+// co
 // const CleverTabs: React.FC<CleverTabsProps<unknown>> = (props) => {
 const CleverTabs = <T extends Idata>(props: CleverTabsProps<T>) => {
 	const [tabIndex, setTabIndex] = useState(0);
@@ -25,7 +31,7 @@ const CleverTabs = <T extends Idata>(props: CleverTabsProps<T>) => {
 		component,
 	} = props;
 
-	console.log('COMPONENT:', component);
+	// console.log('COMPONENT:', component);
 
 	useEffect(() => {
 		if (tabs.length) {
@@ -54,16 +60,17 @@ const CleverTabs = <T extends Idata>(props: CleverTabsProps<T>) => {
 					</StyledTabList>
 				)}
 
-				{tabs.map((tab: any, index: number) => {
-					const { component_name } = tab;
+				{tabs.map((tab: ITabs, index: number) => {
+					const { component_name, application_id } = tab;
+					console.log('TAAAAAABS', tab);
+
 					return (
 						<StyledTabPanel className='tab-content'>
-							{/* <h2>Any content {index + 1}</h2> */}
 							{component_name && (
 								<ApplicationMapper
-									key={tab.application_id ?? (index || index)}
-									component_name={component_name}
-									component={component}
+									key={application_id ?? (index || index)}
+									// component_name={component_name}
+									component={component[component_name]}
 								/>
 							)}
 						</StyledTabPanel>

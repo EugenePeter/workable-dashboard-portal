@@ -5,7 +5,7 @@ import { ActorRef } from 'xstate';
 import { CleverTabs } from '../../../global-components';
 import { Main } from '../../../atomic/dashboard';
 import { Idata } from '../types';
-import * as Components from './index';
+import * as Components from '../../../atomic';
 
 const MainContainer: React.FC<any> = () => {
 	const record_context = useContext(RecordContext);
@@ -31,7 +31,6 @@ const MainContainer: React.FC<any> = () => {
 
 	return (
 		<Main className='main-container'>
-			{/* <h1>SEARCH COMPONENT GOES HERE</h1> */}
 			<CleverTabs data={data} component={Components} />
 		</Main>
 	);

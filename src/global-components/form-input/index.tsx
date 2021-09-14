@@ -1,15 +1,27 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import styled from 'styled-components';
-
-const FormInput = () => {
-	const [first_name, setFirstName] = useState('');
+interface data {
+	value: string;
+	name: string;
+}
+interface FormInputProps {
+	value: string;
+	placeholder: string;
+	label: string;
+	name: string;
+	actions: {
+		handleChange: (data: data) => void;
+	};
+}
+const FormInput: React.FC<FormInputProps> = (props) => {
+	const { value, placeholder, label, actions, name } = props;
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
 	const handleInputChange = (event: any) => {
-		const { value } = event.target;
-		setFirstName(value);
+		const { value, name } = event.target;
+		actions.handleChange({ value, name });
 	};
 
 	const handleLabelClick = () => {
@@ -27,12 +39,8 @@ const FormInput = () => {
 		}
 	}, [is_label_click]);
 
-	const inputActiveHandler = () => {
-		first_name !== '' && setInputActive(true);
-	};
-
 	const handleBlurInput = () => {
-		if (first_name === '') {
+		if (value === '') {
 			setInputActive(false);
 			setLabelClick(false);
 		}
@@ -40,24 +48,22 @@ const FormInput = () => {
 
 	return (
 		<InputContainer>
-			<h1>{first_name} </h1>
-			<h1>{is_input_active} </h1>
 			<Label
 				is_input_active={is_input_active}
-				first_name={first_name}
 				onClick={handleLabelClick}
 			>
-				First Name
+				{label}
 			</Label>
 			<Input
 				type='text'
-				value={first_name}
-				placeholder='First Name'
+				value={value}
+				placeholder={is_input_active ? placeholder : ''}
 				onChange={handleInputChange}
 				onFocus={() => setInputActive(true)}
 				onClick={() => setInputActive(true)}
 				onBlur={handleBlurInput}
 				ref={inputRef}
+				name={name}
 			/>
 		</InputContainer>
 	);
@@ -79,7 +85,7 @@ export const Input = styled.input`
 
 interface LabelProps {
 	is_input_active: boolean;
-	first_name: string;
+	// first_name: string;
 }
 export const Label = styled.label<LabelProps>`
 	display: flex;
@@ -90,7 +96,7 @@ export const Label = styled.label<LabelProps>`
 	z-index: 1;
 	transform: ${({ is_input_active }) =>
 		is_input_active ? `translate(.8rem, .5rem)` : `translate(1rem, 2rem)`};
-	transition: transform 0.4s cubic-bezier(.23,0,0,1.01);
+	transition: transform 0.4s cubic-bezier(0.23, 0, 0, 1.01);
 	&:hover {
 		cursor: text;
 	}
