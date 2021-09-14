@@ -30,6 +30,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		});
 	};
 	console.log('IM AM IS INPUT ACTIVE', is_input_active);
+	console.log('value', value);
 
 	const inputRef = useRef<any>();
 	useEffect(() => {
@@ -39,8 +40,15 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		}
 	}, [is_label_click]);
 
+	useEffect(() => {
+		if (value === '' || null || undefined) {
+			setInputActive(false);
+			setLabelClick(false);
+		}
+	}, [value])
+
 	const handleBlurInput = () => {
-		if (value === '') {
+		if (value === '' || null || undefined) {
 			setInputActive(false);
 			setLabelClick(false);
 		}
