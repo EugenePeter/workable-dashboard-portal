@@ -8,6 +8,11 @@ export interface INextEvent {
 	payload: any;
 }
 
+export interface IPrevEvent {
+	type: 'BACK';
+	payload: any;
+}
+
 export interface IGotConfigData {
 	type: 'GOT_RECORD_DATA';
 	payload: any;
@@ -21,5 +26,6 @@ export interface IGotApplicationData {
 export type IMachineEvents =
 	| IFieldUpdate
 	| INextEvent
+	| IPrevEvent
 	| IGotConfigData
 	| IGotApplicationData;

@@ -20,6 +20,7 @@ interface CleverFormProps {
 	actions: {
 		handleChange: (data: data) => void;
 	};
+  current_step: any
 }
 
 const CleverForm: React.FC<CleverFormProps> = (props) => {

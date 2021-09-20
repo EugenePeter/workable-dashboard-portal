@@ -41,24 +41,16 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 			},
 			ready: {
 				initial: 'step_one',
-				on: {
-					NEXT: [
-						{
-							cond: 'doesApplicationExist',
-							actions: ['assignAsCurrentTab'],
-						},
-						{
-							actions: ['assignTabs'],
-							target: 'loading',
-						},
-					],
-				},
+
 				states: {
 					step_one: {
 						id: 'step_one',
 						on: {
 							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueToContext']
+								actions: ['assignFieldValueToContext'],
+							},
+							NEXT: {
+								target: 'step_two',
 							},
 						},
 					},
@@ -66,7 +58,10 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 						id: 'step_two',
 						on: {
 							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueToContext']
+								actions: ['assignFieldValueToContext'],
+							},
+							BACK: {
+								target: 'step_one',
 							},
 						},
 					},

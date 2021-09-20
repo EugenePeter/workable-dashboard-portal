@@ -54,7 +54,7 @@ export interface IContext {
 			};
 		};
 		fields_3: {};
-		fields2: [
+		step_one: [
 			{
 				label: 'vacancy';
 				required: true;
@@ -84,6 +84,15 @@ export interface IContext {
 				value: '' | null;
 			}
 		];
+		step_two: [
+			{
+				label: 'salary';
+				required: true;
+				place_holder: 'enter vacancy';
+				name: 'vacancy';
+				value: '' | null;
+			}
+		];
 	};
 	application_data: {
 		field_value: {
@@ -91,6 +100,7 @@ export interface IContext {
 			location: null | string;
 			position_type: null | string;
 			job_category: null | string;
+			salary: null | string;
 		};
 	};
 }

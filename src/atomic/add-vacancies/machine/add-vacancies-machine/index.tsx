@@ -34,7 +34,7 @@ const default_context: IContext = {
 			},
 		},
 		fields_3,
-		fields2: [
+		step_one: [
 			{
 				label: 'vacancy',
 				required: true,
@@ -64,6 +64,15 @@ const default_context: IContext = {
 				value: null,
 			},
 		],
+		step_two: [
+			{
+				label: 'salary',
+				required: true,
+				place_holder: 'enter vacancy',
+				name: 'vacancy',
+				value: null,
+			},
+		],
 	},
 	application_data: {
 		field_value: {
@@ -71,6 +80,7 @@ const default_context: IContext = {
 			location: null,
 			position_type: null,
 			job_category: null,
+			salary: null
 		},
 	},
 };
@@ -89,8 +99,8 @@ export const spawn = (context: Partial<IContext>) => {
 export const useClever = (machine: any) => {
 	const recordService = useInterpret(machine);
 	const [state, send] = useActor<ActorRef<any, any>>(recordService);
-	const { context = {} } = state;
-	return [state, context, send];
+	const { context = {}, value: state_value } = state;
+	return [context, state_value, state, send];
 };
 
 export const Interpret = (context: Partial<IContext>) => {
