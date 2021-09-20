@@ -24,7 +24,7 @@ interface CleverFormProps {
 }
 
 const CleverForm: React.FC<CleverFormProps> = (props) => {
-	const { inputs, actions, field_value } = props;
+	const { inputs, actions, field_value, current_step } = props;
 	console.log('INPUTS:', inputs);
 	return (
 		<StyledForm>
@@ -40,6 +40,7 @@ const CleverForm: React.FC<CleverFormProps> = (props) => {
 						actions={actions ?? {}}
 						name={input?.name ?? ''}
             key={`${input?.name}-index`}
+						current_step={current_step}
 						// handleChange={handleInputChange}
 					/>
 				))}

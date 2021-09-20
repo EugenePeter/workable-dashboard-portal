@@ -88,8 +88,8 @@ export interface IContext {
 			{
 				label: 'salary';
 				required: true;
-				place_holder: 'enter vacancy';
-				name: 'vacancy';
+				place_holder: 'enter salary';
+				name: 'salary';
 				value: '' | null;
 			}
 		];

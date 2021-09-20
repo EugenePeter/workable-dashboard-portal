@@ -13,9 +13,10 @@ interface FormInputProps {
 	actions: {
 		handleChange: (data: data) => void;
 	};
+	current_step: any
 }
 const FormInput: React.FC<FormInputProps> = (props) => {
-	const { value, placeholder, label, actions, name } = props;
+	const { value, placeholder, label, actions, name, current_step } = props;
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
@@ -45,7 +46,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			setInputActive(false);
 			setLabelClick(false);
 		}
-	}, [value]);
+	}, [value, current_step]);
 
 	const handleBlurInput = () => {
 		if (value === '' || null || undefined) {
