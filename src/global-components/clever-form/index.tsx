@@ -1,18 +1,22 @@
 import React from 'react';
 
 import { StyledForm } from './styles';
-import { FormInput } from '../index';
+import { FormInput, CleverSelect } from '../index';
 
 interface data {
 	value: string;
 	name: string;
 }
+
+type SelectType = 'text' | 'select' | 'radio' | 'checkbox'
 interface InputItems {
 	label: string;
 	name: string;
 	place_holder: string;
 	required: boolean;
 	value?: '' | null;
+	field_type?: SelectType
+	items?: any
 }
 interface CleverFormProps {
 	field_value: any;
@@ -20,7 +24,7 @@ interface CleverFormProps {
 	actions: {
 		handleChange: (data: data) => void;
 	};
-  current_step: any
+	current_step: any;
 }
 
 const CleverForm: React.FC<CleverFormProps> = (props) => {
@@ -29,21 +33,39 @@ const CleverForm: React.FC<CleverFormProps> = (props) => {
 	return (
 		<StyledForm>
 			{inputs &&
-				inputs.map((input, index:number) => (
-					<FormInput
-						value={
-							(field_value[input.name] ?? '') ||
-							(!field_value[input.name] && '') 
-						}
-						placeholder={input?.place_holder ?? ''}
-						label={input?.label ?? ''}
-						actions={actions ?? {}}
-						name={input?.name ?? ''}
-            key={`${input?.name}-index`}
-						current_step={current_step}
-						// handleChange={handleInputChange}
-					/>
-				))}
+				inputs.map((input, index: number) => {
+					switch (input.field_type) {
+						case 'text':
+							return (
+								<FormInput
+									value={
+										(field_value[input.name] ?? '') ||
+										(!field_value[input.name] && '')
+									}
+									placeholder={input?.place_holder ?? ''}
+									label={input?.label ?? ''}
+									actions={actions ?? {}}
+									name={input?.name ?? ''}
+									key={`${input?.name}-index`}
+									current_step={current_step}
+								/>
+							);
+						case 'select':
+							return <CleverSelect 	value={
+								(field_value[input.name] ?? '') ||
+								(!field_value[input.name] && '')
+							}
+							items={input}
+							placeholder={input?.place_holder ?? ''}
+							label={input?.label ?? ''}
+							actions={actions ?? {}}
+							name={input?.name ?? ''}
+							key={`${input?.name}-index`}
+							current_step={current_step} />;
+						default:
+							<></>;
+					}
+				})}
 		</StyledForm>
 	);
 };

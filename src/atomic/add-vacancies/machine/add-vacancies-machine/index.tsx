@@ -25,6 +25,7 @@ const default_context: IContext = {
 				required: true,
 				place_holder: 'enter position type',
 				name: 'position_type',
+				items: ['Full time', 'Part time', 'Casual', 'temp'],
 			},
 			job_category: {
 				label: 'job category',
@@ -41,6 +42,7 @@ const default_context: IContext = {
 				place_holder: 'enter vacancy',
 				name: 'vacancy',
 				value: null,
+				field_type: 'text',
 			},
 			{
 				label: 'location',
@@ -48,6 +50,7 @@ const default_context: IContext = {
 				place_holder: 'enter location',
 				name: 'location',
 				value: null,
+				field_type: 'text',
 			},
 			{
 				label: 'position type',
@@ -55,6 +58,13 @@ const default_context: IContext = {
 				place_holder: 'enter position type',
 				name: 'position_type',
 				value: null,
+				field_type: 'select',
+				items: [
+					'Full time',
+					'Part time',
+					'Casual',
+					'temp'
+				]
 			},
 			{
 				label: 'job category',
@@ -62,6 +72,13 @@ const default_context: IContext = {
 				place_holder: 'enter pick job category',
 				name: 'job_category',
 				value: null,
+				field_type: 'select',
+				items: [
+					'Full time',
+					'Part time',
+					'Casual',
+					'temp'
+				]
 			},
 		],
 		step_two: [
@@ -71,6 +88,7 @@ const default_context: IContext = {
 				place_holder: 'enter salary',
 				name: 'salary',
 				value: null,
+				field_type: 'text',
 			},
 		],
 	},
@@ -80,7 +98,7 @@ const default_context: IContext = {
 			location: null,
 			position_type: null,
 			job_category: null,
-			salary: null
+			salary: null,
 		},
 	},
 };

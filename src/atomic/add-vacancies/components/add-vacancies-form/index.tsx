@@ -1,7 +1,6 @@
 import { FormInput } from '../../../../global-components';
 import { spawn, useClever } from '../../machine/add-vacancies-machine/';
 import { CleverForm } from '../../../../global-components';
-
 interface data {
 	value: string;
 	name: string;

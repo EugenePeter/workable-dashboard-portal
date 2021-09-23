@@ -25,6 +25,11 @@ interface Steps {
 	step_three: [];
 }
 
+interface DropDownItems {
+	[key: string]: string;
+}
+
+type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
 export interface IContext {
 	application_config: {
 		fields: {
@@ -33,24 +38,30 @@ export interface IContext {
 				required: true;
 				place_holder: 'enter vacancy';
 				name: 'vacancy';
+				field_type?: SelectType;
 			};
 			location: {
 				label: 'location';
 				required: true;
 				place_holder: 'enter location';
 				name: 'location';
+				field_type?: SelectType;
 			};
 			position_type: {
 				label: 'position type';
 				required: true;
 				place_holder: 'enter position type';
 				name: 'position_type';
+				field_type?: SelectType;
+				items?: string[]
 			};
 			job_category: {
 				label: 'job category';
 				required: true;
 				place_holder: 'enter pick job category';
 				name: 'job_category';
+				field_type?: SelectType;
+				items?: string[]
 			};
 		};
 		fields_3: {};
@@ -61,6 +72,7 @@ export interface IContext {
 				place_holder: 'enter vacancy';
 				name: 'vacancy';
 				value: '' | null;
+				field_type?: SelectType;
 			},
 			{
 				label: 'location';
@@ -68,6 +80,7 @@ export interface IContext {
 				place_holder: 'enter location';
 				name: 'location';
 				value: '' | null;
+				field_type?: SelectType;
 			},
 			{
 				label: 'position type';
@@ -75,6 +88,8 @@ export interface IContext {
 				place_holder: 'enter position type';
 				name: 'position_type';
 				value: '' | null;
+				field_type?: SelectType;
+				items?: string[];
 			},
 			{
 				label: 'job category';
@@ -82,6 +97,8 @@ export interface IContext {
 				place_holder: 'enter pick job category';
 				name: 'job_category';
 				value: '' | null;
+				field_type?: SelectType;
+				items?: string[];
 			}
 		];
 		step_two: [
@@ -91,6 +108,7 @@ export interface IContext {
 				place_holder: 'enter salary';
 				name: 'salary';
 				value: '' | null;
+				field_type?: SelectType;
 			}
 		];
 	};
