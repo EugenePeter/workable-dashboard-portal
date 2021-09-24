@@ -17,7 +17,7 @@ export const VacanciesFormWrapper = styled.div`
 	flex-direction: column;
 	box-sizing: border-box;
 	width: 100%;
-	height: 70%;
+	height: 100%;
 `;
 
 export const Wrapper = styled.div`
@@ -35,11 +35,11 @@ export const Header = styled.div`
 	align-items: center;
 	background-color: #f4f4f4;
 	width: 100%;
-	flex-basis: 1;
+	/* flex-basis: 1;
 	flex-grow: 1;
-	flex-shrink: 1;
+	flex-shrink: 1; */
 	background-color: #fff;
-	/* height: 8rem; */
+	height: 20%;
 	padding-left: 4rem;
 	box-sizing: border-box;
 `;
@@ -47,26 +47,29 @@ export const Body = styled.div`
 	display: flex;
 	/* align-items: center; */
 	/* border: solid 2px gray; */
-	flex-basis: 1;
-	flex-grow: 1;
+	/* flex-basis: 1;
+	flex-grow: 2; */
+	height: 50%;
 	flex-shrink: 1;
 	margin-bottom: 2px;
 `;
 
 export const BottomToolbar = styled.div`
-	background-color: #f4f4f4;
-	flex-basis: 1;
+	background-color: #fff;
+	/* flex-basis: 1;
 	flex-grow: 1;
-	flex-shrink: 1;
+	flex-shrink: 1; */
+	height: 30%;
 	margin-bottom: 2px;
 	display: flex;
 `;
 
 export const LeftPanel = styled.div`
 	display: flex;
-	flex-basis: 1;
+	/* flex-basis: 1;
 	flex-grow: 1;
-	flex-shrink: 1;
+	flex-shrink: 1; */
+	width: 30%;
 	/* background-color: lightblue; */
 	align-items: flex-start;
 	height: 100%;
@@ -76,11 +79,12 @@ export const MainPanel = styled.div`
 	display: flex;
 	justify-content: center;
 	position: relative;
-	flex-basis: 1;
+	/* flex-basis: 1;
 	flex-grow: 1;
-	flex-shrink: 1;
+	flex-shrink: 1; */
+	width: 70%;
 	/* background-color: #dfdfdf; */
-	height: calc(100% - 25%);
+	height: 100%;
 	box-sizing: border-box;
 	/* width: 100%; */
 `;
@@ -92,7 +96,7 @@ export const Columns = styled.div`
 	flex-grow: 1;
 	flex-shrink: 1;
 	justify-content: flex-end;
-	background-color: #fff;
+	/* background-color: #fff; */
 `;
 
 export const Button = styled.button`

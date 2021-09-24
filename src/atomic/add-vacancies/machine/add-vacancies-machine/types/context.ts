@@ -30,6 +30,15 @@ interface DropDownItems {
 }
 
 type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
+
+interface IFields {
+	label: string;
+	required: boolean;
+	place_holder: string;
+	name: string;
+	value: string | null;
+	field_type?: SelectType;
+}
 export interface IContext {
 	application_config: {
 		fields: {
@@ -101,16 +110,7 @@ export interface IContext {
 				items?: string[];
 			}
 		];
-		step_two: [
-			{
-				label: 'salary';
-				required: true;
-				place_holder: 'enter salary';
-				name: 'salary';
-				value: '' | null;
-				field_type?: SelectType;
-			}
-		];
+		step_two: IFields[]
 	};
 	application_data: {
 		field_value: {

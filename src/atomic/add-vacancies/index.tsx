@@ -41,7 +41,7 @@ const AddVacancies = () => {
 				<Wrapper className='add-vacancy_wrapper'>
 					<Header className='add-vacancy_header'>Add Vacancy</Header>
 					<Body className='add-vacancy_body'>
-						<LeftPanel className='add-vacancy_left-panel'>
+						<LeftPanel className='add-vacancy_left-panel margin--right'>
 							<StepsIndicator />
 						</LeftPanel>
 						<MainPanel className='add-vacancy_main-panel'>

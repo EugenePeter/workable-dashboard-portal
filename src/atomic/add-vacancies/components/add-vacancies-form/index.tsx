@@ -1,6 +1,7 @@
 import { FormInput } from '../../../../global-components';
 import { spawn, useClever } from '../../machine/add-vacancies-machine/';
 import { CleverForm } from '../../../../global-components';
+
 interface data {
 	value: string;
 	name: string;
@@ -13,8 +14,7 @@ interface IAddVacanciesForm {
 	state: any;
 }
 const AddVacanciesForm: React.FC<IAddVacanciesForm> = (props) => {
-
-	const {state: states} = props
+	const { state: states } = props;
 	const machine = spawn({});
 	const [context, state_value, state, send] = useClever(machine);
 	const { step_one, step_two } = context?.application_config ?? {};
@@ -51,6 +51,7 @@ const AddVacanciesForm: React.FC<IAddVacanciesForm> = (props) => {
 			{/* <h1>{JSON.stringify(state_value)}</h1> */}
 			<>
 				{states.matches('ready.step_one') && (
+					// <h1>step one</h1>
 					<CleverForm
 						inputs={step_one}
 						actions={actionsProp}
@@ -69,8 +70,8 @@ const AddVacanciesForm: React.FC<IAddVacanciesForm> = (props) => {
 				)}
 			</>
 
-			<button onClick={handlePrevStep}>BACK</button>
-			<button onClick={handleNextStep}>NEXT</button>
+			{/* <button onClick={handlePrevStep}>BACK</button>
+			<button onClick={handleNextStep}>NEXT</button> */}
 		</>
 	);
 };

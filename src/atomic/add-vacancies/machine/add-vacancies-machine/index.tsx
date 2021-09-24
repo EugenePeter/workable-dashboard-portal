@@ -5,6 +5,8 @@ import config from './config';
 import options from './options';
 import { fields_3 } from './data';
 
+import { useEffect, useState } from 'react';
+
 const default_context: IContext = {
 	application_config: {
 		fields: {
@@ -73,9 +75,25 @@ const default_context: IContext = {
 		],
 		step_two: [
 			{
+				label: 'pay shedule',
+				required: true,
+				place_holder: 'pay shedule',
+				name: 'salary',
+				value: null,
+				field_type: 'text',
+			},
+			{
 				label: 'salary',
 				required: true,
-				place_holder: 'enter salary',
+				place_holder: 'from',
+				name: 'salary',
+				value: null,
+				field_type: 'text',
+			},
+			{
+				label: 'salary',
+				required: true,
+				place_holder: 'to',
 				name: 'salary',
 				value: null,
 				field_type: 'text',
@@ -104,12 +122,25 @@ export const spawn = (context: Partial<IContext>) => {
 	return createMachine(machine_config, options);
 };
 
+// export let test = {};
+
 export const useClever = (machine: any) => {
 	const recordService = useInterpret(machine);
 	const [state, send] = useActor<ActorRef<any, any>>(recordService);
 	const { context = {}, value: state_value } = state;
+	// test = { context, state_value, state, send, recordService };
 	return [context, state_value, state, send];
 };
+
+// export const useSnap = () => {
+// 	const [snap, setSnap] = useState<any>();
+// 	useEffect(() => {
+// 		//@ts-ignore
+// 		console.log('UPDATE FROM USE CLEVER', test);
+// 		setSnap(test)
+// 	}, [useClever]);
+// 	return [snap];
+// };
 
 export const Interpret = (context: Partial<IContext>) => {
 	const machine = spawn(context);
