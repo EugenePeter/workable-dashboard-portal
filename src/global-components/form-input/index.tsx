@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 interface data {
 	value: string;
 	name: string;
@@ -13,7 +13,7 @@ interface FormInputProps {
 	actions: {
 		handleChange: (data: data) => void;
 	};
-	current_step: any
+	current_step: any;
 }
 const FormInput: React.FC<FormInputProps> = (props) => {
 	const { value, placeholder, label, actions, name, current_step } = props;
@@ -46,6 +46,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			setInputActive(false);
 			setLabelClick(false);
 		}
+		if (value) setInputActive(true);
 	}, [value, current_step]);
 
 	const handleBlurInput = () => {
@@ -93,24 +94,47 @@ interface LabelProps {
 	is_input_active: boolean;
 	// first_name: string;
 }
+const inactive_input = css`
+	background-color: none;
+	font-size: medium;
+`;
+
+const active_input = css`
+	font-size: small;
+	font-weight: 700;
+	background-color: #fff;
+`;
+
+const getLabelStyles = ({ is_input_active }: any): any => {
+	if (is_input_active) return active_input;
+	if (!is_input_active) return inactive_input;
+};
 export const Label = styled.label<LabelProps>`
+	position: absolute;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	background-color: #fff;
-	padding: 0 0.6rem 0 0.6rem;
+	outline: none;
+	border: none;
+	padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+	margin: 0;
 	z-index: 1;
 	transform: ${({ is_input_active }) =>
-		is_input_active ? `translate(.8rem, .5rem)` : `translate(1rem, 2rem)`};
+		is_input_active ? `translate(.8rem, -.7rem)` : `translate(1rem, .7rem)`};
 	transition: transform 0.4s cubic-bezier(0.23, 0, 0, 1.01);
 	&:hover {
 		cursor: text;
 	}
+	box-sizing: border-box;
+	${getLabelStyles}
 `;
 
 export const InputContainer = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	width: 100%;
+	/* flex-basis: 1 1 50%; */
+	margin: 0 1rem 1rem 0;
 `;

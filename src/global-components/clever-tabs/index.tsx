@@ -14,7 +14,7 @@ export interface Idata {
 }
 export interface CleverTabsProps<T> {
 	data: T;
-	component: any
+	component: any;
 }
 
 export interface ITabs {
@@ -84,8 +84,6 @@ const CleverTabs = <T extends Idata>(props: CleverTabsProps<T>) => {
 export default CleverTabs;
 
 export const CleverTabsContainer = styled.div`
-	/* background-color: green; */
-	height: 100vh;
 	padding: 0 1rem 0 1rem;
 `;
 
@@ -102,6 +100,7 @@ export const StyledTabList = styled(TabList)`
 
 	.react-tabs__tab--selected {
 		background-color: #fff;
+		color: #909090 !important;
 	}
 	/* height: 100%; */
 `;
@@ -116,6 +115,11 @@ export const StyledTab = styled(Tab)`
 	border-radius: 0;
 	border-left: 0.2px solid #fff;
 	line-height: 40px;
+	font-size: small;
+	color: #fff;
+	.react-tabs__tab--selected {
+		color: #909090 !important;
+	}
 `;
 
 export const StyledTabsParent = styled(Tabs)`

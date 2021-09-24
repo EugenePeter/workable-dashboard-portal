@@ -8,4 +8,5 @@ export const MainWrapper = styled.div`
 	height: 100vh;
 	/* background-color: blue; */
 	flex-basis: 0;
+	overflow: hidden;
 `;

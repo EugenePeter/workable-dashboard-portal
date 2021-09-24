@@ -6,26 +6,24 @@ const StepsIndicator: React.FC<StepsIndicatorProps> = (props) => {
 	const {} = props;
 
 	return (
-		<ProgressBarContainer>
-			<ProgressWrapper>
-				<StepTitle>
-					<h4>Personal Details</h4>
-					<h4>Education</h4>
-					<h4>Experties</h4>
-					<h4>Skills</h4>
-					<h4>Salary</h4>
-					<h4>Personal Details</h4>
-				</StepTitle>
-				<ProgressBarTrack>
-					<StepIndicator>1</StepIndicator>
-					<StepIndicator>2</StepIndicator>
-					<StepIndicator>3</StepIndicator>
-					<StepIndicator>4</StepIndicator>
-					<StepIndicator>5</StepIndicator>
-					<StepIndicator>6</StepIndicator>
-				</ProgressBarTrack>
-			</ProgressWrapper>
-		</ProgressBarContainer>
+		<ProgressWrapper>
+			<StepTitle>
+				<h4>Personal Details</h4>
+				<h4>Education</h4>
+				<h4>Experties</h4>
+				<h4>Skills</h4>
+				<h4>Salary</h4>
+				<h4>Personal Details</h4>
+			</StepTitle>
+			<ProgressBarTrack>
+				<StepIndicator>1</StepIndicator>
+				<StepIndicator>2</StepIndicator>
+				<StepIndicator>3</StepIndicator>
+				<StepIndicator>4</StepIndicator>
+				<StepIndicator>5</StepIndicator>
+				<StepIndicator>6</StepIndicator>
+			</ProgressBarTrack>
+		</ProgressWrapper>
 	);
 };
 
@@ -37,7 +35,7 @@ export const ProgressWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
-	/* background-color: #723e3e; */
+	/* background-color: yellow; */
 	height: 90%;
 	width: 100%;
 `;
@@ -53,6 +51,7 @@ export const StepTitle = styled.div`
 	min-width: 70%;
 	h4 {
 		font-weight: 200;
+		margin: 0;
 	}
 `;
 

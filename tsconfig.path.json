@@ -1,11 +1,12 @@
-// {
-//   "compilerOptions": {
-//     "baseUrl": "./src",
-//     "paths": {
-//       // "@page/*": ["./browser/applications/page/*"],
-//       "@atomic/*": ["./browser/applications/atomic/*"],
-//       // "@container/*": ["./browser/applications/container/*"],
-//       // "@process/*": ["./browser/applications/process/*"]
-//     }
-//   }
-// }
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      // "@page/*": ["./browser/applications/page/*"],
+      "@global-components/*": ["./global-components"],
+      "@global-styles/*": ["./global-styles"],
+      // "@container/*": ["./browser/applications/container/*"],
+      // "@process/*": ["./browser/applications/process/*"]
+    }
+  }
+}

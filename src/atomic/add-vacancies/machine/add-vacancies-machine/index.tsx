@@ -59,12 +59,7 @@ const default_context: IContext = {
 				name: 'position_type',
 				value: null,
 				field_type: 'select',
-				items: [
-					'Full time',
-					'Part time',
-					'Casual',
-					'temp'
-				]
+				items: ['Full time', 'Part time', 'Casual', 'temp'],
 			},
 			{
 				label: 'job category',
@@ -73,12 +68,7 @@ const default_context: IContext = {
 				name: 'job_category',
 				value: null,
 				field_type: 'select',
-				items: [
-					'Full time',
-					'Part time',
-					'Casual',
-					'temp'
-				]
+				items: ['Full time', 'Part time', 'Casual', 'temp'],
 			},
 		],
 		step_two: [

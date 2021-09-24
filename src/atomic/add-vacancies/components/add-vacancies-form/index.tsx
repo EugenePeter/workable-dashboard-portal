@@ -8,7 +8,13 @@ interface data {
 interface CleverFormActions {
 	handleChange: (data: data) => void;
 }
-const AddVacanciesForm = () => {
+
+interface IAddVacanciesForm {
+	state: any;
+}
+const AddVacanciesForm: React.FC<IAddVacanciesForm> = (props) => {
+
+	const {state: states} = props
 	const machine = spawn({});
 	const [context, state_value, state, send] = useClever(machine);
 	const { step_one, step_two } = context?.application_config ?? {};
@@ -42,23 +48,26 @@ const AddVacanciesForm = () => {
 	return (
 		<>
 			{/* {EXPECTS AN ARRAY IF FIELDS} */}
-			<h1>{JSON.stringify(state_value)}</h1>
-			{state.matches('ready.step_one') && (
-				<CleverForm
-					inputs={step_one}
-					actions={actionsProp}
-					field_value={field_value}
-					current_step={state_value}
-				/>
-			)}
-			{state.matches('ready.step_two') && (
-				<CleverForm
-					inputs={step_two}
-					actions={actionsProp}
-					field_value={field_value}
-					current_step={state_value}
-				/>
-			)}
+			{/* <h1>{JSON.stringify(state_value)}</h1> */}
+			<>
+				{states.matches('ready.step_one') && (
+					<CleverForm
+						inputs={step_one}
+						actions={actionsProp}
+						field_value={field_value}
+						current_step={state_value}
+						orientation='vertical'
+					/>
+				)}
+				{states.matches('ready.step_two') && (
+					<CleverForm
+						inputs={step_two}
+						actions={actionsProp}
+						field_value={field_value}
+						current_step={state_value}
+					/>
+				)}
+			</>
 
 			<button onClick={handlePrevStep}>BACK</button>
 			<button onClick={handleNextStep}>NEXT</button>
