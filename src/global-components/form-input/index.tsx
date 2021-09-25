@@ -14,9 +14,11 @@ interface FormInputProps {
 		handleChange: (data: data) => void;
 	};
 	current_step: any;
+	type?: string;
 }
 const FormInput: React.FC<FormInputProps> = (props) => {
-	const { value, placeholder, label, actions, name, current_step } = props;
+	const { value, placeholder, label, actions, name, current_step, type } =
+		props;
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
@@ -61,17 +63,31 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			<Label is_input_active={is_input_active} onClick={handleLabelClick}>
 				{label}
 			</Label>
-			<Input
-				type='text'
-				value={value}
-				placeholder={is_input_active ? placeholder : ''}
-				onChange={handleInputChange}
-				onFocus={() => setInputActive(true)}
-				onClick={() => setInputActive(true)}
-				onBlur={handleBlurInput}
-				ref={inputRef}
-				name={name}
-			/>
+			{type && type === 'text' && (
+				<Input
+					type='text'
+					value={value}
+					placeholder={is_input_active ? placeholder : ''}
+					onChange={handleInputChange}
+					onFocus={() => setInputActive(true)}
+					onClick={() => setInputActive(true)}
+					onBlur={handleBlurInput}
+					ref={inputRef}
+					name={name}
+				/>
+			)}
+			{type && type === 'textarea' && (
+				<TextArea
+					value={value}
+					placeholder={is_input_active ? placeholder : ''}
+					onChange={handleInputChange}
+					onFocus={() => setInputActive(true)}
+					onClick={() => setInputActive(true)}
+					onBlur={handleBlurInput}
+					ref={inputRef}
+					name={name}
+				/>
+			)}
 		</InputContainer>
 	);
 };
@@ -88,6 +104,19 @@ export const Input = styled.input`
 	margin: 0;
 	max-width: 100%;
 	box-sizing: border-box;
+`;
+interface TextAreaProps {}
+export const TextArea = styled.textarea<TextAreaProps>`
+	width: 100%;
+	/* background-color: #ebebeb; */
+	height: 200px;
+	/* border: none; */
+	outline-color: #5cd176;
+	padding: 1.4rem;
+	margin: 0;
+	max-width: 100%;
+	box-sizing: border-box;
+	resize: none;
 `;
 
 interface LabelProps {
@@ -126,6 +155,7 @@ export const Label = styled.label<LabelProps>`
 		cursor: text;
 	}
 	box-sizing: border-box;
+	font-size: small;
 	${getLabelStyles}
 `;
 

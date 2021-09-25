@@ -21,7 +21,6 @@ const AddVacancies = () => {
 	const machine = spawn({});
 	const [context, state_value, state, send] = useClever(machine);
 
-	console.log("HALAAAA", context, context, state_value, send)
 
 	const handleNextStep = () => {
 		send({

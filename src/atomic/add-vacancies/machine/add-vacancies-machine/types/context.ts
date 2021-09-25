@@ -31,13 +31,14 @@ interface DropDownItems {
 
 type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
 
+interface IFieldsDetails {
+	[key: string]: any;
+}
 interface IFields {
-	label: string;
-	required: boolean;
-	place_holder: string;
-	name: string;
-	value: string | null;
-	field_type?: SelectType;
+	[key: string]: string | IFieldsDetails;
+}
+interface ISteps {
+	[key: string]: IFields;
 }
 export interface IContext {
 	application_config: {
@@ -62,7 +63,7 @@ export interface IContext {
 				place_holder: 'enter position type';
 				name: 'position_type';
 				field_type?: SelectType;
-				items?: string[]
+				items?: string[];
 			};
 			job_category: {
 				label: 'job category';
@@ -70,47 +71,48 @@ export interface IContext {
 				place_holder: 'enter pick job category';
 				name: 'job_category';
 				field_type?: SelectType;
-				items?: string[]
+				items?: string[];
 			};
 		};
-		fields_3: {};
-		step_one: [
-			{
-				label: 'vacancy';
-				required: true;
-				place_holder: 'enter vacancy';
-				name: 'vacancy';
-				value: '' | null;
-				field_type?: SelectType;
-			},
-			{
-				label: 'location';
-				required: true;
-				place_holder: 'enter location';
-				name: 'location';
-				value: '' | null;
-				field_type?: SelectType;
-			},
-			{
-				label: 'position type';
-				required: true;
-				place_holder: 'enter position type';
-				name: 'position_type';
-				value: '' | null;
-				field_type?: SelectType;
-				items?: string[];
-			},
-			{
-				label: 'job category';
-				required: true;
-				place_holder: 'enter pick job category';
-				name: 'job_category';
-				value: '' | null;
-				field_type?: SelectType;
-				items?: string[];
-			}
-		];
-		step_two: IFields[]
+		steps: ISteps;
+		// fields_3: {};
+		// step_one: [
+		// 	{
+		// 		label: 'vacancy';
+		// 		required: true;
+		// 		place_holder: 'enter vacancy';
+		// 		name: 'vacancy';
+		// 		value: '' | null;
+		// 		field_type?: SelectType;
+		// 	},
+		// 	{
+		// 		label: 'location';
+		// 		required: true;
+		// 		place_holder: 'enter location';
+		// 		name: 'location';
+		// 		value: '' | null;
+		// 		field_type?: SelectType;
+		// 	},
+		// 	{
+		// 		label: 'position type';
+		// 		required: true;
+		// 		place_holder: 'enter position type';
+		// 		name: 'position_type';
+		// 		value: '' | null;
+		// 		field_type?: SelectType;
+		// 		items?: string[];
+		// 	},
+		// 	{
+		// 		label: 'job category';
+		// 		required: true;
+		// 		place_holder: 'enter pick job category';
+		// 		name: 'job_category';
+		// 		value: '' | null;
+		// 		field_type?: SelectType;
+		// 		items?: string[];
+		// 	}
+		// ];
+		// step_two: IFields[]
 	};
 	application_data: {
 		field_value: {
@@ -119,6 +121,10 @@ export interface IContext {
 			position_type: null | string;
 			job_category: null | string;
 			salary: null | string;
+			job_description: {
+				job_description: null | string,
+				keywords: string[]
+			}
 		};
 	};
 }

@@ -3,7 +3,7 @@ import { useInterpret, useActor } from '@xstate/react';
 import { IContext } from './types';
 import config from './config';
 import options from './options';
-import { fields_3 } from './data';
+import { fields } from './data';
 
 import { useEffect, useState } from 'react';
 
@@ -36,69 +36,71 @@ const default_context: IContext = {
 				name: 'job_category',
 			},
 		},
-		fields_3,
-		step_one: [
-			{
-				label: 'vacancy',
-				required: true,
-				place_holder: 'enter vacancy',
-				name: 'vacancy',
-				value: null,
-				field_type: 'text',
-			},
-			{
-				label: 'location',
-				required: true,
-				place_holder: 'enter location',
-				name: 'location',
-				value: null,
-				field_type: 'text',
-			},
-			{
-				label: 'position type',
-				required: true,
-				place_holder: 'enter position type',
-				name: 'position_type',
-				value: null,
-				field_type: 'select',
-				items: ['Full time', 'Part time', 'Casual', 'temp'],
-			},
-			{
-				label: 'job category',
-				required: true,
-				place_holder: 'enter pick job category',
-				name: 'job_category',
-				value: null,
-				field_type: 'select',
-				items: ['Full time', 'Part time', 'Casual', 'temp'],
-			},
-		],
-		step_two: [
-			{
-				label: 'pay shedule',
-				required: true,
-				place_holder: 'pay shedule',
-				name: 'salary',
-				value: null,
-				field_type: 'text',
-			},
-			{
-				label: 'salary',
-				required: true,
-				place_holder: 'from',
-				name: 'salary',
-				value: null,
-				field_type: 'text',
-			},
-			{
-				label: 'salary',
-				required: true,
-				place_holder: 'to',
-				name: 'salary',
-				value: null,
-				field_type: 'text',
-			},
-		],
+		steps: {
+			...fields
+		}
+		// step_one: [
+		// 	{
+		// 		label: 'vacancy',
+		// 		required: true,
+		// 		place_holder: 'enter vacancy',
+		// 		name: 'vacancy',
+		// 		value: null,
+		// 		field_type: 'text',
+		// 	},
+		// 	{
+		// 		label: 'location',
+		// 		required: true,
+		// 		place_holder: 'enter location',
+		// 		name: 'location',
+		// 		value: null,
+		// 		field_type: 'text',
+		// 	},
+		// 	{
+		// 		label: 'position type',
+		// 		required: true,
+		// 		place_holder: 'enter position type',
+		// 		name: 'position_type',
+		// 		value: null,
+		// 		field_type: 'select',
+		// 		items: ['Full time', 'Part time', 'Casual', 'temp'],
+		// 	},
+		// 	{
+		// 		label: 'job category',
+		// 		required: true,
+		// 		place_holder: 'enter pick job category',
+		// 		name: 'job_category',
+		// 		value: null,
+		// 		field_type: 'select',
+		// 		items: ['Full time', 'Part time', 'Casual', 'temp'],
+		// 	},
+		// ],
+		// step_two: [
+		// 	{
+		// 		label: 'pay shedule',
+		// 		required: true,
+		// 		place_holder: 'pay shedule',
+		// 		name: 'salary',
+		// 		value: null,
+		// 		field_type: 'text',
+		// 	},
+		// 	{
+		// 		label: 'salary',
+		// 		required: true,
+		// 		place_holder: 'from',
+		// 		name: 'salary',
+		// 		value: null,
+		// 		field_type: 'text',
+		// 	},
+		// 	{
+		// 		label: 'salary',
+		// 		required: true,
+		// 		place_holder: 'to',
+		// 		name: 'salary',
+		// 		value: null,
+		// 		field_type: 'text',
+		// 	},
+		// ],
 	},
 	application_data: {
 		field_value: {
@@ -107,6 +109,10 @@ const default_context: IContext = {
 			position_type: null,
 			job_category: null,
 			salary: null,
+			job_description: {
+				job_description: null,
+				keywords: []
+			}
 		},
 	},
 };

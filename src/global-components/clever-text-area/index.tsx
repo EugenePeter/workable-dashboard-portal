@@ -5,7 +5,7 @@ interface data {
 	value: string;
 	name: string;
 }
-interface CleverSelectProps {
+interface FormInputProps {
 	value: string;
 	placeholder: string;
 	label: string;
@@ -14,31 +14,17 @@ interface CleverSelectProps {
 		handleChange: (data: data) => void;
 	};
 	current_step: any;
-	items?: any;
 }
-const CleverSelect: React.FC<CleverSelectProps> = (props) => {
-	const {
-		value,
-		placeholder,
-		label,
-		actions,
-		name,
-		current_step,
-		items = [],
-	} = props;
+const FormInput: React.FC<FormInputProps> = (props) => {
+	const { value, placeholder, label, actions, name, current_step } = props;
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
-	const handleDropDownItemClick = (event: any) => {
-		console.log('SELECTED ITEM:', event);
-		const {
-			items: { name },
-			item: value,
-		} = event;
+	const handleInputChange = (event: any) => {
+		const { value, name } = event.target;
 		actions.handleChange({ value, name });
 	};
 
-	console.log('ITEMS:', items);
 	const handleLabelClick = () => {
 		setLabelClick(() => {
 			return true;
@@ -79,65 +65,18 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 				type='text'
 				value={value}
 				placeholder={is_input_active ? placeholder : ''}
+				onChange={handleInputChange}
 				onFocus={() => setInputActive(true)}
 				onClick={() => setInputActive(true)}
 				onBlur={handleBlurInput}
 				ref={inputRef}
 				name={name}
-				disabled
 			/>
-			<CleverDropDown>
-				{items &&
-					items.items.map((item: string, index: number) => (
-						<DropDown>
-							<input type='radio' name='position_type' id='' />
-							<DropDownItems
-								onClick={() => handleDropDownItemClick({ items, item })}
-								key={index}
-							>
-								{item}
-							</DropDownItems>
-						</DropDown>
-					))}
-			</CleverDropDown>
 		</InputContainer>
 	);
 };
 
-export default CleverSelect;
-
-export const CleverDropDown = styled.div`
-	width: 100%;
-	border: solid 0.1px #585858;
-	border-top: none;
-	box-sizing: border-box;
-`;
-
-export const DropDown = styled.div`
-	display: flex;
-	align-items: center;
-	background-color: #f5f5f5;
-	padding-left: 1rem;
-	input {
-		margin: 0;
-	}
-
-	:hover {
-		background-color: #f3f3f3;
-	}
-`;
-export const DropDownItems = styled.div`
-	display: flex;
-	line-height: 40px;
-	/* border-bottom: solid 0.1px #585858; */
-	padding-left: 0.5rem;
-	box-sizing: border-box;
-	font-size: small;
-	font-weight: 400;
-	cursor: pointer;
-	/* background-color: red; */
-	width: 100%
-`;
+export default FormInput;
 
 export const Input = styled.input`
 	width: 100%;
@@ -155,7 +94,6 @@ interface LabelProps {
 	is_input_active: boolean;
 	// first_name: string;
 }
-
 const inactive_input = css`
 	background-color: none;
 	font-size: medium;
@@ -165,7 +103,6 @@ const active_input = css`
 	font-size: small;
 	font-weight: 700;
 	background-color: #fff;
-	/* transform: translate(.8rem, .6rem); */
 `;
 
 const getLabelStyles = ({ is_input_active }: any): any => {
@@ -173,13 +110,14 @@ const getLabelStyles = ({ is_input_active }: any): any => {
 	if (!is_input_active) return inactive_input;
 };
 export const Label = styled.label<LabelProps>`
-	display: flex;
 	position: absolute;
+	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	outline: none;
 	border: none;
 	padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+	margin: 0;
 	z-index: 1;
 	transform: ${({ is_input_active }) =>
 		is_input_active ? `translate(.8rem, -.7rem)` : `translate(1rem, .7rem)`};
@@ -187,6 +125,8 @@ export const Label = styled.label<LabelProps>`
 	&:hover {
 		cursor: text;
 	}
+	box-sizing: border-box;
+	font-size: small;
 	${getLabelStyles}
 `;
 
