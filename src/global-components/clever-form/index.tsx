@@ -35,7 +35,7 @@ interface CleverFormProps {
 
 const CleverForm: React.FC<CleverFormProps> = (props) => {
 	const { inputs, actions, field_value, current_step, orientation } = props;
-	console.log('INPUTS:', inputs.position_type);
+	console.log('INPUTS:', inputs);
 	console.log('ACTIONS:', actions);
 
 	return (

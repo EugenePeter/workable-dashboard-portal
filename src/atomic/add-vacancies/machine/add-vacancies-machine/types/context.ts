@@ -120,11 +120,14 @@ export interface IContext {
 			location: null | string;
 			position_type: null | string;
 			job_category: null | string;
-			salary: null | string;
+			salary: {
+				from: string | null;
+				to: string[] | null;
+			} | null;
 			job_description: {
-				job_description: null | string,
-				keywords: string[]
-			}
+				job_description: null | string;
+				keywords: string[];
+			};
 		};
 	};
 }

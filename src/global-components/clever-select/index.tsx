@@ -4,12 +4,14 @@ import styled, { css, keyframes } from 'styled-components';
 interface data {
 	value: string;
 	name: string;
+	secondary_name?: string;
 }
 interface CleverSelectProps {
 	value: string;
 	placeholder: string;
 	label: string;
 	name: string;
+	secondary_name?: string;
 	actions: {
 		handleChange: (data: data) => void;
 	};
@@ -25,6 +27,7 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 		label,
 		actions,
 		name,
+		secondary_name = '',
 		current_step,
 		items = [],
 		orientation,
@@ -33,25 +36,27 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
-	const handleDropDownItemClick = (event: any) => {
-		console.log('SELECTED ITEM:', event);
-		const { name, item: value } = event;
-		actions.handleChange({ value, name });
+	const [is_selected, setSelected] = useState<any>({
+		value: false,
+		index: '',
+	});
+
+	const handleInputChange = (data: any) => {
+		const { name, item: value, event, secondary_name, index } = data;
+		event.preventDefault();
+		actions.handleChange({ value, name, secondary_name });
+		setSelected((prev: any) => ({ ...prev, value: true, index }));
 	};
 
-	console.log('ITEMS:', items);
 	const handleLabelClick = () => {
 		setLabelClick(() => {
 			return true;
 		});
 	};
-	console.log('IM AM IS INPUT ACTIVE', is_input_active);
-	console.log('value', value);
 
 	const inputRef = useRef<any>();
 	useEffect(() => {
 		if (is_label_click === true) {
-			console.log('IM AM CLICKED!!!!! INSIDE USEeFFECT');
 			inputRef.current.focus();
 		}
 	}, [is_label_click]);
@@ -70,6 +75,8 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 			setLabelClick(false);
 		}
 	};
+
+	console.log('VALUE', value);
 
 	return (
 		<>
@@ -96,7 +103,9 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 									<input type='radio' name='position_type' id='' />
 									<DropDownItems
 										orientation={orientation}
-										onClick={() => handleDropDownItemClick({ name, item })}
+										onClick={(event) =>
+											handleInputChange({ event, name, item })
+										}
 										key={index}
 									>
 										{item}
@@ -109,13 +118,32 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 
 			{type && type === 'carousel-button' && (
 				<InputContainer>
-					<CarouselButtonLabel>{label} </CarouselButtonLabel>
+					<CarouselButtonLabel>{label}</CarouselButtonLabel>
 					<CarouselButtonWrapper>
 						<Pointer pointer='left' />
 						{items &&
 							items.map((item: string, index: number) => (
 								<>
-									<CarouselButton key={index}>{item}</CarouselButton>
+									<CarouselButton
+										onClick={(event) =>
+											handleInputChange({
+												event,
+												name,
+												item,
+												secondary_name,
+												index,
+											})
+										}
+										key={index}
+										is_selected={is_selected}
+										className={
+											is_selected && index === is_selected.index
+												? `carousel-button__selected`
+												: ''
+										}
+									>
+										{item}
+									</CarouselButton>
 								</>
 							))}
 						<Pointer pointer='right' />
@@ -127,6 +155,22 @@ const CleverSelect: React.FC<CleverSelectProps> = (props) => {
 };
 
 export default CleverSelect;
+
+const Selected = keyframes`
+
+	0% {
+		transform: scale(.9);
+	}
+
+	45% {
+		transform: scale(1.4);
+	}
+	 100% {
+		transform: scale(1.3);
+		border: none;
+	 }
+	
+ `;
 
 interface IDropDownItemsProps {
 	orientation: CleverSelectProps['orientation'];
@@ -148,6 +192,20 @@ export const CarouselButtonWrapper = styled.div`
 	border: 0.5px solid #757575;
 	button:last-of-type {
 		border-right: 0.5px solid #757575;
+	}
+
+	.carousel-button__selected {
+		background-color: #5cd176;
+		color: #fff;
+		border: none;
+		/* transform: scale(1.1); */
+		z-index: 100;
+		animation-name: ${Selected};
+		animation-duration: 1s;
+		animation-direction: normal;
+		animation-timing-function: cubic-bezier(0.46, 0, 0.11, 1);
+		animation-fill-mode: forwards;
+		box-shadow: 0px 7px 8px -5px rgb(0 0 0 / 21%);
 	}
 
 	/* box-sizing: border-box; */
@@ -182,7 +240,7 @@ export const Pointer = styled.div<CarouselButtonWrapperProps>`
 `;
 
 const CarouselButtonAnimation = keyframes`
- 0% { 	border-color: #757575;}
+ 0% { 	border-color: none;}
  100% { 		background-color: #5cd176;
 		color: #fff;
 		border: none;
@@ -190,7 +248,10 @@ const CarouselButtonAnimation = keyframes`
 		z-index: 100;
  }`;
 
-export const CarouselButton = styled.button`
+interface CarouselButtonProps {
+	is_selected: boolean;
+}
+export const CarouselButton = styled.button<CarouselButtonProps>`
 	position: relative;
 	flex-basis: 1;
 	flex-grow: 1;
@@ -200,6 +261,8 @@ export const CarouselButton = styled.button`
 	border-style: solid;
 	border-width: 0.5px 0 0.5px 0.5px;
 	background: none;
+
+	/* background: ${({ is_selected }) => (is_selected ? '#5cd176' : 'none')}; */
 	position: relative;
 	/* button:last-of-type {
 		border-right: 0.5px solid #757575;
@@ -213,6 +276,10 @@ export const CarouselButton = styled.button`
 		z-index: 100;
 
 		animation-name: ${CarouselButtonAnimation};
+		animation-duration: 0.8s;
+		animation-direction: normal;
+		animation-timing-function: cubic-bezier(0.23, 0, 0, 1.01);
+		animation-fill-mode: forwards;
 
 		/* padding: 4px; */
 		/* transition: transform 0.4s cubic-bezier(0.23, 0, 0, 1.01); */
@@ -221,10 +288,7 @@ export const CarouselButton = styled.button`
 		border: 2px solid #5cd176;
 	} */
 	box-sizing: border-box;
-	animation-duration: 0.6s;
-	animation-direction: normal;
-	animation-timing-function: cubic-bezier(0.23, 0, 0, 1.01);
-	animation-fill-mode: forwards;
+
 	/* transition: padding 0.6s cubic-bezier(0.23, 0, 0, 1.01);
 	transition: transform 0.6s cubic-bezier(0.23, 0, 0, 1.01); */
 `;
@@ -326,5 +390,4 @@ export const InputContainer = styled.div`
 	width: 100%;
 	/* flex-basis: 1 1 50%; */
 	margin: 0 1rem 1rem 0;
-	
 `;

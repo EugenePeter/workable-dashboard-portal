@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 export const Container = styled.div`
 	/* background: pink; */
@@ -99,11 +99,39 @@ export const Columns = styled.div`
 	/* background-color: #fff; */
 `;
 
-export const Button = styled.button`
+interface IButtons {
+	btn_color?: string;
+}
+
+export const cancelButton = css`
+	background: none;
+	border: 2px solid #ff9d7c;
+	color: #ff9d7c;
+`;
+export const nextButton = css`
+	background-color: #80ca90;
+`;
+
+export const backButton = css`
+	background-color: #efc456;
+`;
+
+const getButtonStyles = ({ btn_color }: IButtons) => {
+	if (btn_color === 'cancel') return cancelButton;
+	if (btn_color === 'next') return nextButton;
+	if (btn_color === 'back') return backButton;
+};
+
+export const Button = styled.button<IButtons>`
 	width: 160px;
 	/* line-height: 40px!important; */
 	height: 40px;
 	border: none;
+	/* background-color: #80ca90; */
+	color: #fff;
+	cursor: pointer;
+	border-radius: 4px;
+	${getButtonStyles}
 `;
 
 export const Back = styled.button`

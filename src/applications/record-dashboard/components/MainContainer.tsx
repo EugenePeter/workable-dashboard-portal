@@ -34,7 +34,9 @@ const MainContainer: React.FC<any> = () => {
 	return (
 		<Main className='main-container'>
 			<Container>
-				<CleverSearch />
+				<CleverSearch>
+					<StyledSearch />
+				</CleverSearch>
 				<CleverTabs data={data} component={Components} />
 				<Footer>
 					Architected, designed and developed by Eugene Peter Maestrado
@@ -46,10 +48,20 @@ const MainContainer: React.FC<any> = () => {
 
 export default MainContainer;
 
-export const CleverSearch = styled.input`
+export const CleverSearch = styled.div`
+	width: 100%;
+	padding: 0 1rem 0 1rem;
+	position: relative;
+	box-sizing: border-box;
+	margin-bottom: 1rem;
+`;
+
+export const StyledSearch = styled.input`
 	line-height: 40px;
 	width: 100%;
 	margin: 1rem 0 4rem 0;
+	padding-left: 1.4rem;
+	box-sizing: border-box;
 `;
 export const Container = styled.div`
 	max-height: inherit;

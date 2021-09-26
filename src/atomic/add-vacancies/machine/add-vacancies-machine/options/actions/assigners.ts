@@ -16,6 +16,24 @@ const actions: ActionFunctionMap<IContext, any> = {
 			};
 		},
 	}),
+	assignFieldValueWithObjectDataToContext: assign({
+		application_data: ({ application_data }: any, { payload = {} }) => {
+			const { value = '', name = '', secondary_name = '' } = payload;
+			const details = application_data.field_value[name]
+			console.log('assignTextAreaValueToContext', details);
+			console.log('YOO PAYLOAD:', payload)
+			return {
+				...application_data,
+				field_value: {
+					...application_data.field_value,
+					[name]: {
+						...details,
+						[secondary_name]: value,
+					},
+				},
+			};
+		},
+	}),
 	assignTextAreaValueToContext: assign({
 		application_data: ({ application_data }: any, { payload = {} }) => {
 			const { value = '', name = '' } = payload;
@@ -27,7 +45,7 @@ const actions: ActionFunctionMap<IContext, any> = {
 					...application_data.field_value,
 					[name]: {
 						...details,
-						[name]:value,
+						[name]: value,
 					},
 				},
 			};

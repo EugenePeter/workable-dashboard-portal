@@ -74,7 +74,7 @@
 
 export const fields = {
 	step_one: {
-		step: "Position",
+		step: 'Position',
 		vacancy: {
 			label: 'vacancy',
 			required: true,
@@ -111,9 +111,28 @@ export const fields = {
 		},
 	},
 	step_two: {
-		step: "Renumeration",
-		renumeration: {
-			label: "Pay Schedule"
+		// step: 'Renumeration',
+		salary: {
+			label: 'Pay Schedule',
+			name: 'salary',
+			to: {
+				label: 'to',
+				required: true,
+				place_holder: 'to',
+				name: 'to',
+				value: null,
+				field_type: 'text',
+				items: [10, 20, 30, 40, 50, 70, 80, 90, 100],
+			},
+			from: {
+				label: 'from',
+				required: true,
+				place_holder: 'pay from',
+				name: 'from',
+				value: null,
+				field_type: 'text',
+				items: [10, 20, 30, 40, 50, 70, 80, 90, 100],
+			},
 		},
 		from: {
 			label: 'from',
@@ -143,7 +162,11 @@ export const fields = {
 			value: null,
 			field_type: 'textarea',
 		},
-		keywords: []
+		keywords: {
+			label: 'Add Keywords',
+			place_holder: 'Type your keywords here separated by pressing enter.',
+			subtitle: 'For a more refined candidates matching you can add keywords.'
+		},
 	},
 	step_four: {
 		position_and_responsibilities: {
@@ -154,7 +177,7 @@ export const fields = {
 			value: null,
 			field_type: 'text',
 		},
-		keywords: []
+		keywords: [],
 	},
 	step_five: {
 		skills_and_qualifications: {
@@ -167,8 +190,8 @@ export const fields = {
 		},
 		keywords: {
 			skills: [],
-			qualifications: []
-		}
+			qualifications: [],
+		},
 	},
 	step_six: {
 		employer_questions: {
@@ -179,6 +202,6 @@ export const fields = {
 			value: null,
 			field_type: 'textarea',
 		},
-		keywords: []
+		keywords: [],
 	},
 };

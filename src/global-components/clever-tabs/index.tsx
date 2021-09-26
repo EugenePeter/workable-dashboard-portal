@@ -94,7 +94,7 @@ export const StyledTabPanel = styled(TabPanel)`
 export const StyledTabList = styled(TabList)`
 	display: flex;
 	padding: 0;
-	background-color: #a8c1cd;
+	/* background-color: #a8c1cd; */
 	margin: 0;
 	margin-bottom: 0;
 
@@ -108,7 +108,7 @@ export const StyledTab = styled(Tab)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: none;
+	background-color: #a8c1cd;
 	list-style-type: none;
 	padding: 0 1rem 0 1rem;
 	/* height: 2rem; */
@@ -117,6 +117,7 @@ export const StyledTab = styled(Tab)`
 	line-height: 40px;
 	font-size: small;
 	color: #fff;
+	cursor: pointer;
 	.react-tabs__tab--selected {
 		color: #909090 !important;
 	}

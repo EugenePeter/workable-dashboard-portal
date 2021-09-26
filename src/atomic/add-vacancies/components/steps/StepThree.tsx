@@ -1,5 +1,8 @@
 import React from 'react';
-import { FormInput } from '../../../../global-components';
+import {
+	FormInput,
+	CleverKeywordSelector,
+} from '../../../../global-components';
 interface data {
 	value: string;
 	name: string;
@@ -19,6 +22,7 @@ interface InputItems {
 	value?: '' | null;
 	field_type?: SelectType;
 	items?: string[];
+	subtitle?: string;
 }
 
 interface IFields {
@@ -42,7 +46,8 @@ const StepThree: React.FC<StepThreeProps> = (props) => {
 			{inputs?.job_description && (
 				<FormInput
 					value={
-						(field_value[inputs?.job_description?.name].job_description ?? '') ||
+						(field_value[inputs?.job_description?.name].job_description ??
+							'') ||
 						(!field_value[inputs?.job_description?.name].job_description && '')
 					}
 					type='textarea'
@@ -53,6 +58,18 @@ const StepThree: React.FC<StepThreeProps> = (props) => {
 					current_step={current_step}
 				/>
 			)}
+			<CleverKeywordSelector
+				// value={
+				// 	(field_value[inputs?.job_description?.name].job_description ?? '') ||
+				// 	(!field_value[inputs?.job_description?.name].job_description && '')
+				// }
+				// type='textarea'
+				placeholder={inputs?.keywords?.place_holder ?? ''}
+				label={inputs?.keywords?.label ?? ''}
+				actions={actions ?? {}}
+				name={inputs?.job_description?.name ?? ''}
+				current_step={current_step}
+			/>
 		</div>
 	);
 };

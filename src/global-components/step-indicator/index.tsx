@@ -99,7 +99,7 @@ export const StepIndicator = styled.div`
 	background-color: #ffffff;
 	height: 1.5rem;
 	width: 1.5rem;
-	border-radius: 50%;
+	border-radius: 20%;
 	border: 2px solid #5cd176;
 	color: #5cd176;
 `;
