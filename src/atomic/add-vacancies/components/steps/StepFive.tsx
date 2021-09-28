@@ -4,7 +4,7 @@ import {
 	CleverKeywordSelector,
 } from '../../../../global-components';
 
-import {StepFiveProps} from '../../types/steps.types';
+import { StepFiveProps } from '../../types/steps.types';
 // interface data {
 // 	value: string;
 // 	name?: string;
@@ -40,7 +40,8 @@ import {StepFiveProps} from '../../types/steps.types';
 
 const StepFive: React.FC<StepFiveProps> = (props) => {
 	const { inputs, actions, field_value, current_step } = props;
-	const input_value = field_value[inputs?.skills_and_qualifications?.name]?.value;
+	const input_value =
+		field_value[inputs?.skills_and_qualifications?.name]?.value;
 	console.log('input_value', input_value);
 	return (
 		<div>
@@ -48,9 +49,7 @@ const StepFive: React.FC<StepFiveProps> = (props) => {
 				<FormInput
 					value={input_value ?? ''}
 					type={inputs?.skills_and_qualifications?.field_type ?? ''}
-					placeholder={
-						inputs?.skills_and_qualifications?.place_holder ?? ''
-					}
+					placeholder={inputs?.skills_and_qualifications?.place_holder ?? ''}
 					label={inputs?.skills_and_qualifications?.label ?? ''}
 					actions={actions ?? {}}
 					name={inputs?.skills_and_qualifications?.name ?? ''}
