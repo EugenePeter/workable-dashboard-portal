@@ -124,12 +124,32 @@ export interface IContext {
 				from: string | null;
 				to: string[] | null;
 			} | null;
-			job_description: {
-				job_description: null | string;
-				keywords: string[];
-			};
+			job_description: JobDescription | null;
+			position_and_responsibilities: PositionsAndResponsibilities | null;
+			skills_and_qualifications: SkillsAndQualifications | null;
+			employer_questions: EmployerQuestions | null;
 		};
 	};
+}
+
+interface JobDescription {
+	value: string | null;
+	keywords: string[] | null;
+}
+
+interface PositionsAndResponsibilities {
+	value: string | null;
+	keywords: string[] | null;
+}
+
+interface SkillsAndQualifications {
+	value: string | null;
+	keywords: string[] | null;
+}
+
+interface EmployerQuestions {
+	value: string | null;
+	keywords: string[] | null;
 }
 
 // export interface IApplicationConfig {

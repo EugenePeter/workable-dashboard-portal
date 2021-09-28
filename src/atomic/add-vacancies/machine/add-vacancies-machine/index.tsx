@@ -110,9 +110,21 @@ const default_context: IContext = {
 			job_category: null,
 			salary: null,
 			job_description: {
-				job_description: null,
+				value: null,
 				keywords: []
-			}
+			},
+			position_and_responsibilities: {
+				value: null,
+				keywords: []
+			},
+			skills_and_qualifications:  {
+				value: null,
+				keywords: []
+			},
+			employer_questions:  {
+				value: null,
+				keywords: []
+			},
 		},
 	},
 };

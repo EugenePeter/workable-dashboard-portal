@@ -8,15 +8,11 @@ import { StepThreeProps } from '../../types/steps.types';
 // interface data {
 // 	value: string;
 // 	name?: string;
-// 	secondary_name?:string
+// 	secondary_name?: string;
 // }
 
 // type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
 
-// interface JobDescriptionObject {
-// 	description: string;
-// 	keywords: string[];
-// }
 // interface InputItems {
 // 	label: string;
 // 	name: string;
@@ -42,23 +38,21 @@ import { StepThreeProps } from '../../types/steps.types';
 // 	orientation?: 'horizontal' | 'vertical';
 // }
 
-const StepThree: React.FC<StepThreeProps> = (props) => {
-	const { inputs, actions, field_value, current_step, orientation } = props;
-
+const StepSix: React.FC<StepThreeProps> = (props) => {
+	const { inputs, actions, field_value, current_step } = props;
+	const input_value = field_value[inputs?.employer_questions?.name]?.value;
+	console.log('input_value', input_value);
 	return (
 		<div>
-			{inputs?.job_description && (
+			{inputs?.employer_questions && (
 				<FormInput
-					value={
-						(field_value[inputs?.job_description?.name].value ?? '') ||
-						(!field_value[inputs?.job_description?.name].value && '')
-					}
-					type={inputs?.job_description?.field_type ?? ''}
-					placeholder={inputs?.job_description?.place_holder ?? ''}
-					label={inputs?.job_description?.label ?? ''}
+					value={input_value ?? ''}
+					type={inputs?.employer_questions?.field_type ?? ''}
+					placeholder={inputs?.employer_questions?.place_holder ?? ''}
+					label={inputs?.employer_questions?.label ?? ''}
 					actions={actions ?? {}}
-					name={inputs?.job_description?.name ?? ''}
-					accessor={inputs?.job_description?.accessor ?? ''}
+					name={inputs?.employer_questions?.name ?? ''}
+					accessor={inputs?.employer_questions?.accessor ?? ''}
 					secondary_name={inputs?.keywords?.name ?? ''}
 					current_step={current_step}
 				/>
@@ -67,7 +61,7 @@ const StepThree: React.FC<StepThreeProps> = (props) => {
 				placeholder={inputs?.keywords?.place_holder ?? ''}
 				label={inputs?.keywords?.label ?? ''}
 				actions={actions ?? {}}
-				name={inputs?.job_description?.name ?? ''}
+				name={inputs?.employer_questions?.name ?? ''}
 				secondary_name={inputs?.keywords?.name ?? ''}
 				current_step={current_step}
 			/>
@@ -75,4 +69,4 @@ const StepThree: React.FC<StepThreeProps> = (props) => {
 	);
 };
 
-export default StepThree;
+export default StepSix;

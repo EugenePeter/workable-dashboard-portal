@@ -4,12 +4,16 @@ import styled, { css } from 'styled-components';
 interface data {
 	value: string;
 	name: string;
+	secondary_name?: string
+	accessor?:string
 }
 interface FormInputProps {
 	value: string;
 	placeholder: string;
 	label: string;
 	name: string;
+	accessor?:string
+	secondary_name?:string
 	actions: {
 		handleChange: (data: data) => void;
 	};
@@ -17,15 +21,18 @@ interface FormInputProps {
 	type?: string;
 }
 const FormInput: React.FC<FormInputProps> = (props) => {
-	const { value, placeholder, label, actions, name, current_step, type } =
+	const { value, placeholder, label, actions, name, current_step, type , accessor} =
 		props;
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
 	const handleInputChange = (event: any) => {
 		const { value, name } = event.target;
-		actions.handleChange({ value, name });
+		console.log('handleInputChange', value)
+		actions.handleChange({ value, name, accessor });
 	};
+
+	console.log('HEY:', name)
 
 	const handleLabelClick = () => {
 		setLabelClick(() => {
@@ -126,12 +133,14 @@ interface LabelProps {
 const inactive_input = css`
 	background-color: none;
 	font-size: medium;
+	color: #a3a3a3;
 `;
 
 const active_input = css`
 	font-size: small;
 	font-weight: 700;
 	background-color: #fff;
+	color: #5c5c5c;
 `;
 
 const getLabelStyles = ({ is_input_active }: any): any => {
@@ -156,6 +165,7 @@ export const Label = styled.label<LabelProps>`
 	}
 	box-sizing: border-box;
 	font-size: small;
+
 	${getLabelStyles}
 `;
 

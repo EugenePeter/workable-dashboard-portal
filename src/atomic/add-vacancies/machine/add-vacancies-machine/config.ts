@@ -72,7 +72,7 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 						id: 'step_three',
 						on: {
 							ON_FIELD_UPDATE: {
-								actions: ['assignTextAreaValueToContext']
+								actions: ['assignFieldValueWithKeywordsArrayToContext']
 							},
 							NEXT: {
 								target: 'step_four',
@@ -86,7 +86,7 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 						id: 'step_four',
 						on: {
 							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueToContext'],
+								actions: ['assignFieldValueWithKeywordsArrayToContext'],
 							},
 							NEXT: {
 								target: 'step_five',
@@ -100,7 +100,7 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 						id: 'step_five',
 						on: {
 							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueToContext'],
+								actions: ['assignFieldValueWithKeywordsArrayToContext'],
 							},
 							NEXT: {
 								target: 'step_six',
@@ -114,10 +114,24 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
 						id: 'step_six',
 						on: {
 							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueToContext'],
+								actions: ['assignFieldValueWithKeywordsArrayToContext'],
+							},
+							NEXT: {
+								target: 'submit',
 							},
 							BACK: {
 								target: 'step_five',
+							},
+						},
+					},
+					submit: {
+						id: 'submit',
+						on: {
+							// ON_FIELD_UPDATE: {
+							// 	actions: ['assignFieldValueWithKeywordsArrayToContext'],
+							// },
+							BACK: {
+								target: 'step_six',
 							},
 						},
 					},

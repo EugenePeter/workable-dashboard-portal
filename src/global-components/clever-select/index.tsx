@@ -187,7 +187,6 @@ export const CarouselButtonWrapper = styled.div`
 	justify-content: space-evenly;
 	width: 100%;
 	line-height: 40px;
-
 	padding: 1.5rem;
 	border: 0.5px solid #757575;
 	button:last-of-type {
@@ -208,7 +207,7 @@ export const CarouselButtonWrapper = styled.div`
 		box-shadow: 0px 7px 8px -5px rgb(0 0 0 / 21%);
 	}
 
-	/* box-sizing: border-box; */
+	box-sizing: border-box;
 
 	/* border-right: none; */
 `;
@@ -351,12 +350,14 @@ interface LabelProps {
 const inactive_input = css`
 	background-color: none;
 	font-size: medium;
+	color: #a3a3a3;
 `;
 
 const active_input = css`
 	font-size: small;
 	font-weight: 700;
 	background-color: #fff;
+	color: #5c5c5c;
 	/* transform: translate(.8rem, .6rem); */
 `;
 

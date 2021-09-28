@@ -3,22 +3,33 @@ import { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 interface data {
 	value: string;
-	name: string;
+	name?: string;
+	secondary_name?: string;
 }
 interface FormInputProps {
-	value: string;
+	value?: string;
 	placeholder: string;
 	label: string;
 	name: string;
+
 	actions: {
 		handleChange: (data: data) => void;
 	};
 	current_step: any;
 	type?: string;
+	secondary_name?: string;
+	subtitle?: string;
 }
-const CleverKeywordSelector: React.FC<any> = (props) => {
-	const { value, placeholder, label, actions, name, current_step, subtitle } =
-		props;
+const CleverKeywordSelector: React.FC<FormInputProps> = (props) => {
+	const {
+		value,
+		placeholder,
+		label,
+		actions,
+		name,
+		current_step,
+		secondary_name = '',
+	} = props;
 	const [is_input_active, setInputActive] = useState(false);
 	const [is_label_click, setLabelClick] = useState(false);
 
@@ -32,8 +43,10 @@ const CleverKeywordSelector: React.FC<any> = (props) => {
 		appendToKeywordsList((keywordList: IKeywordTerms[]) => {
 			return [...keywordList, keywordTerm];
 		});
-		actions.handleChange(keywordTerm);
+		const value = keywordTerm;
+		actions.handleChange({ value, name, secondary_name });
 		setKeywordTerm('');
+		setInputActive(true);
 	};
 
 	console.log('HANDLEINPUT KEYWORD EVENT:', keywordTerm);
@@ -60,15 +73,22 @@ const CleverKeywordSelector: React.FC<any> = (props) => {
 	}, [is_label_click]);
 
 	useEffect(() => {
-		if (value === '' || null || undefined) {
+		if (!keywordTerm || !keywordList) {
 			setInputActive(false);
 			setLabelClick(false);
 		}
-		if (value) setInputActive(true);
-	}, [value, current_step]);
+		if (keywordTerm || keywordList) setInputActive(true);
+	}, [keywordTerm, keywordList, current_step]);
+
+	// useEffect(() => {
+	// 	if (keywordList || keywordTerm) {
+	// 		setInputActive(true);
+	// 	}
+	// 	if (keywordList) setInputActive(true);
+	// }, [keywordList, current_step]);
 
 	const handleBlurInput = () => {
-		if (value === '' || null || undefined) {
+		if (!keywordTerm) {
 			setInputActive(false);
 			setLabelClick(false);
 		}
@@ -100,7 +120,7 @@ const CleverKeywordSelector: React.FC<any> = (props) => {
 					<KeywordsContainer>
 						{keywordList &&
 							keywordList.map((keyword: string, index: number) => (
-								<PillBoxes>
+								<PillBoxes key={index}>
 									<div>{keyword}</div>{' '}
 									<div>
 										<RemoveKeyword>
@@ -150,15 +170,18 @@ interface LabelProps {
 const inactive_input = css`
 	background-color: none;
 	font-size: medium;
+	color: #a3a3a3;
 `;
 
 const active_input = css`
 	font-size: small;
 	font-weight: 700;
 	background-color: #fff;
+	color: #5c5c5c;
 `;
 
 const getLabelStyles = ({ is_input_active }: any): any => {
+	console.log('is input active ? ', is_input_active);
 	if (is_input_active) return active_input;
 	if (!is_input_active) return inactive_input;
 };

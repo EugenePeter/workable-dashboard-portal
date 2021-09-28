@@ -4,35 +4,32 @@ import {
 	CleverKeywordSelector,
 } from '../../../../global-components';
 
-import { StepThreeProps } from '../../types/steps.types';
+import { StepFourProps } from '../../types/steps.types';
+
 // interface data {
 // 	value: string;
 // 	name?: string;
-// 	secondary_name?:string
+// 	secondary_name?: string;
 // }
 
 // type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
 
-// interface JobDescriptionObject {
-// 	description: string;
-// 	keywords: string[];
-// }
 // interface InputItems {
 // 	label: string;
 // 	name: string;
-// 	accessor?:string
 // 	place_holder: string;
 // 	required: boolean;
 // 	value?: '' | null;
 // 	field_type?: SelectType;
 // 	items?: string[];
 // 	subtitle?: string;
+// 	accessor?: string;
 // }
 
 // interface IFields {
 // 	[key: string]: InputItems;
 // }
-// interface StepThreeProps {
+// interface StepFourProps {
 // 	field_value: any;
 // 	inputs: IFields;
 // 	actions: {
@@ -42,23 +39,24 @@ import { StepThreeProps } from '../../types/steps.types';
 // 	orientation?: 'horizontal' | 'vertical';
 // }
 
-const StepThree: React.FC<StepThreeProps> = (props) => {
-	const { inputs, actions, field_value, current_step, orientation } = props;
-
+const StepFour: React.FC<StepFourProps> = (props) => {
+	const { inputs, actions, field_value, current_step } = props;
+	const input_value =
+		field_value[inputs?.position_and_responsibilities?.name]?.value;
+	console.log('input_value', input_value ?? '');
 	return (
 		<div>
-			{inputs?.job_description && (
+			{inputs?.position_and_responsibilities && (
 				<FormInput
-					value={
-						(field_value[inputs?.job_description?.name].value ?? '') ||
-						(!field_value[inputs?.job_description?.name].value && '')
+					value={input_value ?? ''}
+					type={inputs?.position_and_responsibilities?.field_type ?? ''}
+					placeholder={
+						inputs?.position_and_responsibilities?.place_holder ?? ''
 					}
-					type={inputs?.job_description?.field_type ?? ''}
-					placeholder={inputs?.job_description?.place_holder ?? ''}
-					label={inputs?.job_description?.label ?? ''}
+					label={inputs?.position_and_responsibilities?.label ?? ''}
 					actions={actions ?? {}}
-					name={inputs?.job_description?.name ?? ''}
-					accessor={inputs?.job_description?.accessor ?? ''}
+					name={inputs?.position_and_responsibilities?.name ?? ''}
+					accessor={inputs?.position_and_responsibilities?.accessor ?? ''}
 					secondary_name={inputs?.keywords?.name ?? ''}
 					current_step={current_step}
 				/>
@@ -67,7 +65,7 @@ const StepThree: React.FC<StepThreeProps> = (props) => {
 				placeholder={inputs?.keywords?.place_holder ?? ''}
 				label={inputs?.keywords?.label ?? ''}
 				actions={actions ?? {}}
-				name={inputs?.job_description?.name ?? ''}
+				name={inputs?.position_and_responsibilities?.name ?? ''}
 				secondary_name={inputs?.keywords?.name ?? ''}
 				current_step={current_step}
 			/>
@@ -75,4 +73,4 @@ const StepThree: React.FC<StepThreeProps> = (props) => {
 	);
 };
 
-export default StepThree;
+export default StepFour;

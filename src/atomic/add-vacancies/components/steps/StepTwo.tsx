@@ -1,46 +1,48 @@
 import React from 'react';
 import { CleverSelect } from '../../../../global-components';
-interface data {
-	value: string;
-	name: string;
-}
 
-type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
+import { StepTwoProps } from '../../types/steps.types';
+// interface data {
+// 	value: string;
+// 	name: string;
+// }
 
-interface JobDescriptionObject {
-	description: string;
-	keywords: string[];
-}
-interface InputItems {
-	label: string;
-	name: string;
-	from: string;
-	place_holder: string;
-	required: boolean;
-	value: '' | null;
-	field_type?: SelectType;
-	items: string[];
-}
+// type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
 
-interface ISalary {
-	from: InputItems;
-	to: InputItems;
-	label: string;
-	name: string;
-}
+// interface JobDescriptionObject {
+// 	description: string;
+// 	keywords: string[];
+// }
+// interface InputItems {
+// 	label: string;
+// 	name: string;
+// 	from: string;
+// 	place_holder: string;
+// 	required: boolean;
+// 	value: '' | null;
+// 	field_type?: SelectType;
+// 	items: string[];
+// }
 
-interface IFields {
-	[key: string]: ISalary;
-}
-interface StepTwoProps {
-	field_value: any;
-	inputs: IFields;
-	actions: {
-		handleChange: (data: data) => void;
-	};
-	current_step: any;
-	orientation?: 'horizontal' | 'vertical';
-}
+// interface ISalary {
+// 	from: InputItems;
+// 	to: InputItems;
+// 	label: string;
+// 	name: string;
+// }
+
+// interface IFields {
+// 	[key: string]: ISalary;
+// }
+// interface StepTwoProps {
+// 	field_value: any;
+// 	inputs: IFields;
+// 	actions: {
+// 		handleChange: (data: data) => void;
+// 	};
+// 	current_step: any;
+// 	orientation?: 'horizontal' | 'vertical';
+// }
 
 const StepTwo: React.FC<StepTwoProps> = (props) => {
 	const { inputs, actions, field_value, current_step } = props;

@@ -75,6 +75,7 @@
 export const fields = {
 	step_one: {
 		step: 'Position',
+		buttons: [{ NEXT: 'Next' }],
 		vacancy: {
 			label: 'vacancy',
 			required: true,
@@ -94,7 +95,7 @@ export const fields = {
 		position_type: {
 			label: 'position type',
 			required: true,
-			place_holder: 'enter position type',
+			place_holder: 'pick a position type below',
 			name: 'position_type',
 			value: null,
 			field_type: 'select',
@@ -103,7 +104,7 @@ export const fields = {
 		job_category: {
 			label: 'job category',
 			required: true,
-			place_holder: 'pick a job category',
+			place_holder: 'pick a job category below',
 			name: 'job_category',
 			value: null,
 			field_type: 'select',
@@ -111,7 +112,8 @@ export const fields = {
 		},
 	},
 	step_two: {
-		// step: 'Renumeration',
+		buttons: [{ NEXT: 'Next' }, { BACK: 'Back' }],
+		step: 'Renumeration',
 		salary: {
 			label: 'Pay Schedule',
 			name: 'salary',
@@ -154,54 +156,82 @@ export const fields = {
 		},
 	},
 	step_three: {
+		buttons: [{ NEXT: 'Next' }, { BACK: 'Back' }],
+		step: 'Job Description',
 		job_description: {
 			label: 'Job Description',
 			required: true,
 			place_holder: 'About this role',
 			name: 'job_description',
+			accessor: 'value',
 			value: null,
 			field_type: 'textarea',
 		},
 		keywords: {
+			name: 'keywords',
 			label: 'Add Keywords',
 			place_holder: 'Type your keywords here separated by pressing enter.',
-			subtitle: 'For a more refined candidates matching you can add keywords.'
+			subtitle: 'For a more refined candidates matching you can add keywords.',
 		},
 	},
 	step_four: {
+		buttons: [{ NEXT: 'Next' }, { BACK: 'Back' }],
+		step: 'Position and Responsibilities',
 		position_and_responsibilities: {
 			label: 'Position and Responsibilities',
 			required: true,
-			place_holder: 'Position and Responsibilities',
+			place_holder: 'Enter Position and Responsibilities here...',
 			name: 'position_and_responsibilities',
+			accessor: 'value',
 			value: null,
-			field_type: 'text',
+			field_type: 'textarea',
 		},
-		keywords: [],
+		keywords: {
+			name: 'keywords',
+			label: 'Add Position and Responsibilities',
+			place_holder: 'Type related keywords here separated by pressing enter.',
+			subtitle: 'For a more refined candidates matching you can add keywords.',
+		},
 	},
 	step_five: {
+		buttons: [{ NEXT: 'Next' }, { BACK: 'Back' }],
+		step: 'Skills and Qualifications',
 		skills_and_qualifications: {
 			label: 'Skills and Qualifications',
 			required: true,
 			place_holder: 'Skills and Qualifications',
 			name: 'skills_and_qualifications',
+			accessor: 'value',
 			value: null,
-			field_type: 'text',
+			field_type: 'textarea',
 		},
 		keywords: {
-			skills: [],
-			qualifications: [],
+			name: 'keywords',
+			label: 'Add Skills and Qualifications',
+			place_holder: 'Type related keywords here separated by pressing enter.',
+			subtitle: 'For a more refined candidates matching you can add keywords.',
 		},
 	},
 	step_six: {
+		buttons: [{ NEXT: 'Next' }, { BACK: 'Back' }],
+		step: 'Employer Questions',
 		employer_questions: {
 			label: 'Employer Questions',
 			required: true,
 			place_holder: 'Employer Questions',
-			name: '	employer_questions',
+			name: 'employer_questions',
+			accessor: 'value',
 			value: null,
 			field_type: 'textarea',
 		},
-		keywords: [],
+		keywords: {
+			name: 'keywords',
+			label: 'Add Employer Questions',
+			place_holder: 'Type related keywords here separated by pressing enter.',
+			subtitle: 'For a more refined candidates matching you can add keywords.',
+		},
+	},
+	submit: {
+		step: 'Submit',
 	},
 };

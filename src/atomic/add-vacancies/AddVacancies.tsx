@@ -18,17 +18,17 @@ import { AddVacanciesContext } from './AddVacanciesProvider';
 import { StepsIndicator } from '../../global-components/index';
 import { AddVacanciesForm } from './components';
 
-import { spawn, useClever } from './machine/add-vacancies-machine';
+// import { spawn, useClever } from './machine/add-vacancies-machine';
 
 import { Modifiers } from '../../global-styles';
 
-interface data {
-	value: string;
-	name: string;
-}
-interface CleverFormActions {
-	handleChange: (data: data) => void;
-}
+// interface data {
+// 	value: string;
+// 	name: string;
+// }
+// interface CleverFormActions {
+// 	handleChange: (data: data) => void;
+// }
 
 const AddVacancies = () => {
 	const add_vacancies_context = useContext(AddVacanciesContext);
@@ -58,12 +58,34 @@ const AddVacancies = () => {
 							<Button btn_color='cancel'>Cancel</Button>
 						</Columns>
 						<Columns>
-							<Button btn_color='back' onClick={handlePrevStep} className='margin__spacer'>
-								Back
-							</Button>
-							<Button btn_color='next' onClick={handleNextStep} className='margin--right'>
-								Next
-							</Button>
+							{!state.matches('ready.step_one') && (
+								<Button
+									btn_color='back'
+									onClick={handlePrevStep}
+									className='margin__spacer'
+								>
+									Back
+								</Button>
+							)}
+							{!state.matches('ready.submit') &&
+								!state.matches('ready.step_six') && (
+									<Button
+										btn_color='next'
+										onClick={handleNextStep}
+										className='margin--right'
+									>
+										Next
+									</Button>
+								)}
+							{state.matches('ready.step_six') && (
+								<Button
+									btn_color='next'
+									onClick={handleNextStep}
+									className='margin--right'
+								>
+									SUBMIT
+								</Button>
+							)}
 						</Columns>
 					</BottomToolbar>
 				</Wrapper>
