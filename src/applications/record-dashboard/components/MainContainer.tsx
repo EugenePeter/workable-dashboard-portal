@@ -3,7 +3,7 @@ import { RecordContext } from '../RecordProvider';
 import { useSelector, useActor } from '@xstate/react';
 import { ActorRef } from 'xstate';
 import { CleverTabs } from '../../../global-components';
-import { Main } from '../../../atomic/dashboard';
+import { Main } from '../../../global-components';
 import { Idata } from '../types';
 import * as Components from '../../../atomic';
 

@@ -17,7 +17,7 @@ interface FormInputProps {
 	actions: {
 		handleChange: (data: data) => void;
 	};
-	current_step: any;
+	current_step?: any;
 	type?: string;
 }
 const FormInput: React.FC<FormInputProps> = (props) => {

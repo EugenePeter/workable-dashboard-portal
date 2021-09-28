@@ -80,7 +80,7 @@ const AddVacancies = () => {
 							{state.matches('ready.step_six') && (
 								<Button
 									btn_color='next'
-									onClick={handleNextStep}
+									// onClick={handleNextStep}
 									className='margin--right'
 								>
 									SUBMIT

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: rgb(126, 126, 126)
 }
 
 code {
@@ -16,5 +17,6 @@ code {
 html {
   height: 100%;
   background-color: aliceblue;
+  font-family: 'Roboto', sans-serif;
 
 }

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { RecordContext } from '../RecordProvider';
 import { useActor } from '@xstate/react';
 import { ActorRef } from 'xstate';
-import { LeftSideBar } from '../../../atomic/dashboard';
+import { LeftSideBar } from '../../../global-components';
 
 export const MenuItems: React.FC<any> = () => {
 	const { recordService } = useContext(RecordContext);

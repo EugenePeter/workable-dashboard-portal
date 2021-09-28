@@ -52,7 +52,7 @@ export const StepTitle = styled.div`
 	height: 100%;
 	min-width: 70%;
 	h4 {
-		font-weight: 200;
+		font-weight: 400;
 	}
 `;
 

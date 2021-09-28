@@ -7,4 +7,8 @@ export const Modifiers = createGlobalStyle`
   .margin__spacer {
     margin-right: .5rem;
   }
+
+  .margin--top {
+    margin: 1rem 0 1rem 0;
+  }
 `;

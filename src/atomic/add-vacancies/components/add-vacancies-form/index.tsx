@@ -32,7 +32,7 @@ const AddVacanciesForm: React.FC<IAddVacanciesForm> = () => {
 
 	return (
 		<>
-			<Title> {steps[state.value.ready].step}</Title>
+			{/* <Title> {steps[state.value.ready].step}</Title> */}
 			{state.matches('ready.step_one') && (
 				<>
 					<StepOne
