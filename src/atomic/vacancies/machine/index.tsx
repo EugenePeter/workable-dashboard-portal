@@ -3,7 +3,7 @@ import { useInterpret, useActor } from "@xstate/react";
 import { IContext } from "./types";
 import config from "./config";
 import options from "./options";
-import { fields } from "./data";
+// import { fields } from "./data";
 
 const default_context: IContext = {
   company_id: null,

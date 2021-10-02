@@ -1981,6 +1981,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-table@^7.7.5":
+  version "7.7.5"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.5.tgz#34603de1f4e745d8eacdb289b90b6853d97f4e6d"
+  integrity sha512-a6KLDyT6ZXxewYTG9sOsB9heoBVTYYwfoyB7+sziNGECOJXqmavdWeRtp548pJl490XHmUSxaWnVeeT9UOW9Gg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-tabs@^2.3.3":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@types/react-tabs/-/react-tabs-2.3.3.tgz#93536e06d616b98012e0574b9b3e280400152734"

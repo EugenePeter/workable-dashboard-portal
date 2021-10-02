@@ -1,10 +1,8 @@
 import { useContext } from "react";
-
 import { Container } from "./styles";
-
 import { VacanciesContext, VacanciesActions } from "./VacanciesProvider";
-
 import { Modifiers } from "../../global-styles";
+import { CleverTable } from "./components";
 
 const VacanciesConsumer = () => {
   const vacancies_context = useContext(VacanciesContext);
@@ -18,7 +16,7 @@ const VacanciesConsumer = () => {
     <>
       <Modifiers />
       <Container className="add-vacancy_container">
-        <h1>VACANCIES GOES HERE</h1>
+        <CleverTable />
       </Container>
     </>
   );
