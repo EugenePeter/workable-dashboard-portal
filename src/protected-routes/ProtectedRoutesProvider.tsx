@@ -20,7 +20,7 @@ const ProtectedRoutesProvider: React.FC<any> = (props) => {
 
   const token = localStorage.getItem("token");
   const [isAuthenticated, setAuthenticated] = useState(Boolean(token));
-  // const [isSignUpSuccess, setSignUpSuccess] = useState<boolean | null>(false);
+  const [company_id, setCompanyId] = useState(localStorage.getItem("company_id"));
 
   const actionsProp: AddVacanciesActions = {
     handleLogin: (e: any) => {
@@ -35,8 +35,10 @@ const ProtectedRoutesProvider: React.FC<any> = (props) => {
   };
   return (
     <>
-      <ProtectedRoutesContext.Provider value={{ isAuthenticated }}>
-        <ProtectedRoutesActions.Provider value={{ actionsProp, setAuthenticated }}>{children} </ProtectedRoutesActions.Provider>
+      <ProtectedRoutesContext.Provider value={{ isAuthenticated, company_id }}>
+        <ProtectedRoutesActions.Provider value={{ actionsProp, setAuthenticated, setCompanyId }}>
+          {children}
+        </ProtectedRoutesActions.Provider>
       </ProtectedRoutesContext.Provider>
       ;
     </>

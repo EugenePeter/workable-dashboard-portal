@@ -1,145 +1,165 @@
-import { AnyStateNodeDefinition, MachineConfig } from 'xstate';
-import { IContext, IMachineEvents } from './types';
-const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> =
-	{
-		id: 'record-shell',
-		initial: 'ready',
+import { AnyStateNodeDefinition, MachineConfig } from "xstate";
+import { IContext, IMachineEvents } from "./types";
+const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> = {
+  id: "record-shell",
+  initial: "ready",
 
-		states: {
-			get_config: {
-				always: {
-					target: 'getApplicationData',
-				},
-			},
-			getApplicationData: {
-				invoke: {
-					id: 'get-application-data',
-					src: 'getApplicationData',
-				},
-				on: {
-					GOT_APPLICATION_DATA: {
-						actions: ['assignApplicationData'],
-						target: 'ready',
-					},
-				},
-			},
-			get_record_data: {
-				invoke: {
-					id: 'get-rercord-data',
-					src: 'getRecordData',
-				},
-				on: {
-					GOT_RECORD_DATA: {
-						actions: ['assignRecordData'],
-					},
-				},
-			},
-			loading: {
-				always: {
-					target: 'ready',
-				},
-			},
-			ready: {
-				initial: 'step_one',
-
-				states: {
-					step_one: {
-						id: 'step_one',
-						on: {
-							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueToContext'],
-							},
-							NEXT: {
-								target: 'step_two',
-							},
-						},
-					},
-					step_two: {
-						id: 'step_two',
-						on: {
-							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueWithObjectDataToContext'],
-							},
-							NEXT: {
-								target: 'step_three',
-							},
-							BACK: {
-								target: 'step_one',
-							},
-						},
-					},
-					step_three: {
-						id: 'step_three',
-						on: {
-							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueWithKeywordsArrayToContext']
-							},
-							NEXT: {
-								target: 'step_four',
-							},
-							BACK: {
-								target: 'step_two',
-							},
-						},
-					},
-					step_four: {
-						id: 'step_four',
-						on: {
-							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueWithKeywordsArrayToContext'],
-							},
-							NEXT: {
-								target: 'step_five',
-							},
-							BACK: {
-								target: 'step_three',
-							},
-						},
-					},
-					step_five: {
-						id: 'step_five',
-						on: {
-							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueWithKeywordsArrayToContext'],
-							},
-							NEXT: {
-								target: 'step_six',
-							},
-							BACK: {
-								target: 'step_four',
-							},
-						},
-					},
-					step_six: {
-						id: 'step_six',
-						on: {
-							ON_FIELD_UPDATE: {
-								actions: ['assignFieldValueWithKeywordsArrayToContext'],
-							},
-							NEXT: {
-								target: 'submit',
-							},
-							BACK: {
-								target: 'step_five',
-							},
-						},
-					},
-					submit: {
-						id: 'submit',
-						on: {
-							// ON_FIELD_UPDATE: {
-							// 	actions: ['assignFieldValueWithKeywordsArrayToContext'],
-							// },
-							BACK: {
-								target: 'step_six',
-							},
-						},
-					},
-				},
-			},
-			done: {},
-			error: {},
-		},
-	};
+  states: {
+    get_config: {
+      always: {
+        target: "getApplicationData",
+      },
+    },
+    getApplicationData: {
+      invoke: {
+        id: "get-application-data",
+        src: "getApplicationData",
+      },
+      on: {
+        GOT_APPLICATION_DATA: {
+          actions: ["assignApplicationData"],
+          target: "ready",
+        },
+      },
+    },
+    get_record_data: {
+      invoke: {
+        id: "get-rercord-data",
+        src: "getRecordData",
+      },
+      on: {
+        GOT_RECORD_DATA: {
+          actions: ["assignRecordData"],
+        },
+      },
+    },
+    loading: {
+      always: {
+        target: "ready",
+      },
+    },
+    ready: {
+      id: "ready",
+      initial: "step_one",
+      states: {
+        step_one: {
+          id: "step_one",
+          on: {
+            ON_FIELD_UPDATE: {
+              actions: ["assignFieldValueToContext"],
+            },
+            NEXT: {
+              target: "step_two",
+            },
+          },
+        },
+        step_two: {
+          id: "step_two",
+          on: {
+            ON_FIELD_UPDATE: {
+              actions: ["assignFieldValueWithObjectDataToContext"],
+            },
+            NEXT: {
+              target: "step_three",
+            },
+            BACK: {
+              target: "step_one",
+            },
+          },
+        },
+        step_three: {
+          id: "step_three",
+          on: {
+            ON_FIELD_UPDATE: {
+              actions: ["assignFieldValueWithKeywordsArrayToContext"],
+            },
+            NEXT: {
+              target: "step_four",
+            },
+            BACK: {
+              target: "step_two",
+            },
+          },
+        },
+        step_four: {
+          id: "step_four",
+          on: {
+            ON_FIELD_UPDATE: {
+              actions: ["assignFieldValueWithKeywordsArrayToContext"],
+            },
+            NEXT: {
+              target: "step_five",
+            },
+            BACK: {
+              target: "step_three",
+            },
+          },
+        },
+        step_five: {
+          id: "step_five",
+          on: {
+            ON_FIELD_UPDATE: {
+              actions: ["assignFieldValueWithKeywordsArrayToContext"],
+            },
+            NEXT: {
+              target: "step_six",
+            },
+            BACK: {
+              target: "step_four",
+            },
+          },
+        },
+        step_six: {
+          id: "step_six",
+          on: {
+            ON_FIELD_UPDATE: {
+              actions: ["assignFieldValueWithKeywordsArrayToContext"],
+            },
+            NEXT: {
+              target: "submit",
+            },
+            BACK: {
+              target: "step_five",
+            },
+          },
+        },
+        submit: {
+          id: "submit",
+          invoke: {
+            id: "submit",
+            src: "submit",
+          },
+          on: {
+            SUCCESS: {
+              actions: ["assignResultsToContext"],
+              target: "submitted",
+            },
+            ERROR: {
+              actions: ["assignErrorstoContext", (_: any, e) => console.log("ERROR:", e)],
+              target: "#retry",
+            },
+          },
+        },
+        submitted: {
+          id: "submitted",
+          always: {
+            target: "#done",
+          },
+        },
+      },
+    },
+    retry: {
+      id: "retry",
+      always: {
+        target: "#ready",
+      },
+    },
+    done: {
+      id: "done",
+      type: "final",
+    },
+    error: {},
+  },
+};
 
 export default config;

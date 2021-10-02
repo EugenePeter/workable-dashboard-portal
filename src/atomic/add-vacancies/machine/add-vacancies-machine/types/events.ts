@@ -1,31 +1,43 @@
 export interface IFieldUpdate {
-	type: 'ON_FIELD_UPDATE';
-	payload: any;
+  type: "ON_FIELD_UPDATE";
+  payload: any;
 }
 
 export interface INextEvent {
-	type: 'NEXT';
-	payload: any;
+  type: "NEXT";
+  payload: any;
 }
 
 export interface IPrevEvent {
-	type: 'BACK';
-	payload: any;
+  type: "BACK";
+  payload: any;
 }
 
 export interface IGotConfigData {
-	type: 'GOT_RECORD_DATA';
-	payload: any;
+  type: "GOT_RECORD_DATA";
+  payload: any;
 }
 
 export interface IGotApplicationData {
-	type: 'GOT_APPLICATION_DATA';
-	payload: any;
+  type: "GOT_APPLICATION_DATA";
+  payload: any;
+}
+
+export interface ISuccessEvent {
+  type: "SUCCESS";
+  payload: any;
+}
+
+export interface IErrorEvent {
+  type: "ERROR";
+  payload: any;
 }
 
 export type IMachineEvents =
-	| IFieldUpdate
-	| INextEvent
-	| IPrevEvent
-	| IGotConfigData
-	| IGotApplicationData;
+  | IFieldUpdate
+  | INextEvent
+  | IPrevEvent
+  | IGotConfigData
+  | IGotApplicationData
+  | ISuccessEvent
+  | IErrorEvent;

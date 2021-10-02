@@ -1,8 +1,44 @@
 /* eslint-disable indent */
-import { ServiceConfig } from 'xstate'
-import { IContext, IMachineEvents } from '../../types'
-import { IRecord } from '../../types'
+import { ServiceConfig } from "xstate";
+import { IContext, IMachineEvents } from "../../types";
+import { IRecord } from "../../types";
 
-const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {}
+import { GraphQLClient } from "graphql-request";
+import { ADD_VACANCIES } from "../../gql";
 
-export default services
+const { ADD_VACANCIES_API_ENDPOINT = "http://localhost:5050/graphql" } = process.env;
+// authorization: `Basic ${encodeBase64(`${BASIC_AUTH_USERNAME}:${BASIC_AUTH_PASSWORD}`)}`,
+
+const graphql = new GraphQLClient("http://localhost:5050/graphql", {
+  headers: {},
+});
+
+const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
+  submit: (context) => async (send: any) => {
+    const { application_data, company_id } = context;
+    const { field_value } = application_data;
+    console.log("VACANCIES SUMISSION", field_value);
+    try {
+      const { result } = await graphql.request(ADD_VACANCIES, {
+        params: {
+          ...field_value,
+          company_id,
+        },
+      });
+      console.log("VACANCIES SUMISSION RESULT", result);
+      // return {
+      //   ...data[0],
+      //   success,
+      // };
+    } catch (error) {
+      console.error(JSON.stringify(error, undefined, 2));
+      send({
+        type: "ERROR",
+      });
+      process.exit(1);
+      // throw error;
+    }
+  },
+};
+
+export default services;

@@ -5,151 +5,152 @@
 // }
 
 interface IApplicationData {
-	application_list: Object[];
+  application_list: Object[];
 }
 
 type ImenuItems = string;
 interface IActiveTab {
-	application_id: string;
-	application_name: string;
+  application_id: string;
+  application_name: string;
 }
 
 interface Itabs {
-	application_id: string;
-	application_name: string;
+  application_id: string;
+  application_name: string;
 }
 
 interface Steps {
-	step_one: [];
-	step_two: [];
-	step_three: [];
+  step_one: [];
+  step_two: [];
+  step_three: [];
 }
 
 interface DropDownItems {
-	[key: string]: string;
+  [key: string]: string;
 }
 
-type SelectType = 'text' | 'select' | 'radio' | 'checkbox';
+type SelectType = "text" | "select" | "radio" | "checkbox";
 
 interface IFieldsDetails {
-	[key: string]: any;
+  [key: string]: any;
 }
 interface IFields {
-	[key: string]: string | IFieldsDetails;
+  [key: string]: string | IFieldsDetails;
 }
 interface ISteps {
-	[key: string]: IFields;
+  [key: string]: IFields;
 }
 export interface IContext {
-	application_config: {
-		fields: {
-			vacancy: {
-				label: 'vacancy';
-				required: true;
-				place_holder: 'enter vacancy';
-				name: 'vacancy';
-				field_type?: SelectType;
-			};
-			location: {
-				label: 'location';
-				required: true;
-				place_holder: 'enter location';
-				name: 'location';
-				field_type?: SelectType;
-			};
-			position_type: {
-				label: 'position type';
-				required: true;
-				place_holder: 'enter position type';
-				name: 'position_type';
-				field_type?: SelectType;
-				items?: string[];
-			};
-			job_category: {
-				label: 'job category';
-				required: true;
-				place_holder: 'enter pick job category';
-				name: 'job_category';
-				field_type?: SelectType;
-				items?: string[];
-			};
-		};
-		steps: ISteps;
-		// fields_3: {};
-		// step_one: [
-		// 	{
-		// 		label: 'vacancy';
-		// 		required: true;
-		// 		place_holder: 'enter vacancy';
-		// 		name: 'vacancy';
-		// 		value: '' | null;
-		// 		field_type?: SelectType;
-		// 	},
-		// 	{
-		// 		label: 'location';
-		// 		required: true;
-		// 		place_holder: 'enter location';
-		// 		name: 'location';
-		// 		value: '' | null;
-		// 		field_type?: SelectType;
-		// 	},
-		// 	{
-		// 		label: 'position type';
-		// 		required: true;
-		// 		place_holder: 'enter position type';
-		// 		name: 'position_type';
-		// 		value: '' | null;
-		// 		field_type?: SelectType;
-		// 		items?: string[];
-		// 	},
-		// 	{
-		// 		label: 'job category';
-		// 		required: true;
-		// 		place_holder: 'enter pick job category';
-		// 		name: 'job_category';
-		// 		value: '' | null;
-		// 		field_type?: SelectType;
-		// 		items?: string[];
-		// 	}
-		// ];
-		// step_two: IFields[]
-	};
-	application_data: {
-		field_value: {
-			vacancy: null | string;
-			location: null | string;
-			position_type: null | string;
-			job_category: null | string;
-			salary: {
-				from: string | null;
-				to: string[] | null;
-			} | null;
-			job_description: JobDescription | null;
-			position_and_responsibilities: PositionsAndResponsibilities | null;
-			skills_and_qualifications: SkillsAndQualifications | null;
-			employer_questions: EmployerQuestions | null;
-		};
-	};
+  company_id?: string | null;
+  application_config: {
+    fields: {
+      vacancy: {
+        label: "vacancy";
+        required: true;
+        place_holder: "enter vacancy";
+        name: "vacancy";
+        field_type?: SelectType;
+      };
+      location: {
+        label: "location";
+        required: true;
+        place_holder: "enter location";
+        name: "location";
+        field_type?: SelectType;
+      };
+      position_type: {
+        label: "position type";
+        required: true;
+        place_holder: "enter position type";
+        name: "position_type";
+        field_type?: SelectType;
+        items?: string[];
+      };
+      job_category: {
+        label: "job category";
+        required: true;
+        place_holder: "enter pick job category";
+        name: "job_category";
+        field_type?: SelectType;
+        items?: string[];
+      };
+    };
+    steps: ISteps;
+    // fields_3: {};
+    // step_one: [
+    // 	{
+    // 		label: 'vacancy';
+    // 		required: true;
+    // 		place_holder: 'enter vacancy';
+    // 		name: 'vacancy';
+    // 		value: '' | null;
+    // 		field_type?: SelectType;
+    // 	},
+    // 	{
+    // 		label: 'location';
+    // 		required: true;
+    // 		place_holder: 'enter location';
+    // 		name: 'location';
+    // 		value: '' | null;
+    // 		field_type?: SelectType;
+    // 	},
+    // 	{
+    // 		label: 'position type';
+    // 		required: true;
+    // 		place_holder: 'enter position type';
+    // 		name: 'position_type';
+    // 		value: '' | null;
+    // 		field_type?: SelectType;
+    // 		items?: string[];
+    // 	},
+    // 	{
+    // 		label: 'job category';
+    // 		required: true;
+    // 		place_holder: 'enter pick job category';
+    // 		name: 'job_category';
+    // 		value: '' | null;
+    // 		field_type?: SelectType;
+    // 		items?: string[];
+    // 	}
+    // ];
+    // step_two: IFields[]
+  };
+  application_data: {
+    field_value: {
+      vacancy: null | string;
+      location: null | string;
+      position_type: null | string;
+      job_category: null | string;
+      salary: {
+        from: string | null;
+        to: string[] | null;
+      } | null;
+      job_description: JobDescription | null;
+      position_and_responsibilities: PositionsAndResponsibilities | null;
+      skills_and_qualifications: SkillsAndQualifications | null;
+      employer_questions: EmployerQuestions | null;
+    };
+  };
 }
 
 interface JobDescription {
-	value: string | null;
-	keywords: string[] | null;
+  value: string | null;
+  keywords: string[] | null;
 }
 
 interface PositionsAndResponsibilities {
-	value: string | null;
-	keywords: string[] | null;
+  value: string | null;
+  keywords: string[] | null;
 }
 
 interface SkillsAndQualifications {
-	value: string | null;
-	keywords: string[] | null;
+  value: string | null;
+  keywords: string[] | null;
 }
 
 interface EmployerQuestions {
-	value: string | null;
-	keywords: string[] | null;
+  value: string | null;
+  keywords: string[] | null;
 }
 
 // export interface IApplicationConfig {
@@ -184,7 +185,7 @@ interface EmployerQuestions {
 // }
 
 export interface IRecord<TEntry> {
-	[key: string]: TEntry;
+  [key: string]: TEntry;
 }
 
 // export type IChildInitialData = Pick<

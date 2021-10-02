@@ -17,7 +17,7 @@ const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
         console.log("AXIOS RESPONSE", result);
 
         const {
-          data: { company_name, email, message, successfuly_signedin, token },
+          data: { company_name, email, message, successfuly_signedin, token, id },
         } = result;
         console.log("successfuly_signedin", successfuly_signedin);
         if (successfuly_signedin) {
@@ -27,11 +27,14 @@ const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
               token,
               company_name,
               email,
+              id,
               message,
               successfuly_signedin,
             },
           });
           localStorage.setItem("token", token);
+          localStorage.setItem("email", email);
+          localStorage.setItem("company_id", id);
         }
       } catch (e: any) {
         const { data } = e.response;

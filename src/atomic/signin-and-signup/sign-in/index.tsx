@@ -23,11 +23,14 @@ const SignIn = () => {
   const { fields } = (application_config as IContext["application_config"]) ?? {};
   const { field_value = {}, results } = application_data ?? {};
 
-  const { setAuthenticated } = useContext(ProtectedRoutesActions);
+  const { setAuthenticated, setCompanyId } = useContext(ProtectedRoutesActions);
   const token = localStorage.getItem("token");
   useEffect(() => {
-    if (results.token) setAuthenticated(true);
-  }, [results, setAuthenticated]);
+    if (results.token) {
+      setAuthenticated(true);
+      setCompanyId(localStorage.getItem("company_id"));
+    }
+  }, [results, setAuthenticated, setCompanyId]);
 
   useEffect(() => {
     console.log("TOKEN IS CALLLED:", token);
