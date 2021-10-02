@@ -10,18 +10,12 @@ import { v4 as uuidv4 } from "uuid";
 const success = true;
 const results = [
   {
-    application_name: "Home",
-    component_name: "Home",
-    application_id: `${uuidv4()}`,
-  },
-  {
     application_name: "add vancancies",
     component_name: "AddVacancies",
     application_id: `${uuidv4()}`,
   },
   {
     application_name: "vancancies",
-    component_name: "Vacancies",
     application_id: `${uuidv4()}`,
   },
   {

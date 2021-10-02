@@ -40,8 +40,6 @@ const AddVacancies = () => {
     <>
       <Modifiers />
       <Container className="add-vacancy_container">
-        {/* <h1>ADD VACANCIES</h1> */}
-        {JSON.stringify(state.value)}
         <Wrapper className="add-vacancy_wrapper">
           <Header className="add-vacancy_header">Add Vacancy</Header>
           <Body className="add-vacancy_body">
