@@ -43,10 +43,10 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> = 
       initial: "get_vacancies",
       states: {
         get_vacancies: {
-          id: "submit",
+          id: "get_vacancies",
           invoke: {
-            id: "submit",
-            src: "submit",
+            id: "get-vancancies",
+            src: "getVacancies",
           },
           on: {
             SUCCESS: {

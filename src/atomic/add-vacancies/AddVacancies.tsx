@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import {
   Container,
@@ -14,34 +14,30 @@ import {
 } from "./styles";
 
 import { AddVacanciesContext } from "./AddVacanciesProvider";
-
+import { RecordContext } from "../../applications/record-dashboard/RecordProvider";
 import { StepsIndicator } from "../../global-components/index";
 import { AddVacanciesForm } from "./components";
 
-// import { spawn, useClever } from './machine/add-vacancies-machine';
-
 import { Modifiers } from "../../global-styles";
-
-// interface data {
-// 	value: string;
-// 	name: string;
-// }
-// interface CleverFormActions {
-// 	handleChange: (data: data) => void;
-// }
 
 const AddVacancies = () => {
   const add_vacancies_context = useContext(AddVacanciesContext);
+  const { setDisplayRightSideBar } = useContext(RecordContext);
   const { state, actionsProp } = add_vacancies_context;
 
   const { handleNextStep, handlePrevStep } = actionsProp;
+
+  useEffect(() => {
+    setDisplayRightSideBar(true);
+    return () => setDisplayRightSideBar(false);
+  }, [setDisplayRightSideBar]);
 
   return (
     <>
       <Modifiers />
       <Container className="add-vacancy_container">
         <Wrapper className="add-vacancy_wrapper">
-          <Header className="add-vacancy_header">Add Vacancy</Header>
+          <Header className="add-vacancy_header"></Header>
           <Body className="add-vacancy_body">
             <LeftPanel className="add-vacancy_left-panel margin--right">
               <StepsIndicator />
@@ -53,11 +49,10 @@ const AddVacancies = () => {
             </MainPanel>
           </Body>
           <BottomToolbar className="add-vacancy_bottom-toolbar">
+            <Columns></Columns>
             <Columns>
-              <Button btn_color="cancel">Cancel</Button>
-            </Columns>
-            <Columns>
-              {!state.matches("ready.step_one") && (
+              {/* <Button btn_color="cancel">Cancel</Button> */}
+              {!state.matches("ready.submit") && !state.matches("ready.step_one") && (
                 <Button btn_color="back" onClick={handlePrevStep} className="margin__spacer">
                   Back
                 </Button>

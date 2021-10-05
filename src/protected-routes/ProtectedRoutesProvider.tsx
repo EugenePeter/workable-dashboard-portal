@@ -40,7 +40,6 @@ const ProtectedRoutesProvider: React.FC<any> = (props) => {
           {children}
         </ProtectedRoutesActions.Provider>
       </ProtectedRoutesContext.Provider>
-      ;
     </>
   );
   // return <ProtectedRoutesContext.Provider value={{ isAuthenticated, actionsProp, setAuthenticated }}>{children}</ProtectedRoutesContext.Provider>;

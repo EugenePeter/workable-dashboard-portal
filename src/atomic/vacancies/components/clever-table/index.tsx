@@ -10,8 +10,21 @@ const CleverTable = () => {
   const { application_data = {} } = context ?? {};
   const { vacancies = [] } = application_data ?? {};
   console.log("INSIDE CLEVER TABLE:", vacancies);
+
+  const transformData = (data: any) =>
+    data.map((item: any) => {
+      return {
+        ...item,
+        salary: `$${item?.salary?.from} - ${item?.salary?.to}`,
+      };
+    });
+
+  // const result = transformData(vacancies);
+
+  // console.log("TEST:", result);
+
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => vacancies, [vacancies]);
+  const data = useMemo(() => transformData(vacancies), [vacancies]);
   const tableInstance = useTable({
     columns,
     data,

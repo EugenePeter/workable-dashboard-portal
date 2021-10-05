@@ -1,7 +1,7 @@
-import { RecordDashboard } from '../../applications';
+import { RecordDashboard } from "../../applications";
 
 const Home = () => {
-	return <RecordDashboard />;
+  return <RecordDashboard />;
 };
 
 export default Home;

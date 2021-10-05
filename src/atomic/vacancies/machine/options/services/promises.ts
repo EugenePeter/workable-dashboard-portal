@@ -5,14 +5,17 @@ import { IRecord } from "../../types";
 import { GraphQLClient } from "graphql-request";
 import { GET_VACANCIES } from "../../gql";
 
+import axios from "axios";
+
 const { GET_VACANCIES_API_ENDPOINT = "http://localhost:6060/graphql" } = process.env;
+const { GET_VACANCIES_API_ENDPOINT2 = "http://localhost:6060/vacancies" } = process.env;
 
 const graphql = new GraphQLClient(GET_VACANCIES_API_ENDPOINT, {
   headers: {},
 });
 
 const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
-  submit: (context) => async (send: any) => {
+  getVacancies: (context) => async (send: any) => {
     const { company_id = "" } = context ?? {};
     try {
       const { result } = await graphql.request(GET_VACANCIES, {
@@ -20,6 +23,11 @@ const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
       });
       console.log("VACANCIES FOUND", result);
       send({ type: "SUCCESS", payload: result });
+      // const {
+      //   data: { vacancies },
+      // } = await axios.get(`${GET_VACANCIES_API_ENDPOINT2}`);
+      // console.log("VACANCIES FOUND", vacancies);
+      // send({ type: "SUCCESS", payload: vacancies });
     } catch (error) {
       console.error(JSON.stringify(error, undefined, 2));
       send({

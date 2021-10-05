@@ -12,7 +12,11 @@ const ProtectedRouteConsumer: React.FC<any> = (props) => {
 
   console.log("isAuthenticated", isAuthenticated);
 
-  return <Route {...rest}>{isAuthenticated ? <Home /> : <LandingPage />}</Route>;
+  return (
+    <>
+      <Route {...rest}>{isAuthenticated ? <Home /> : <LandingPage />}</Route>
+    </>
+  );
 };
 
 export default withRouter(ProtectedRouteConsumer);

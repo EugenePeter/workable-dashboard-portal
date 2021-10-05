@@ -1,7 +1,7 @@
 export const COLUMNS = [
   {
-    Header: "Company Id",
-    accessor: "company_id",
+    Header: "Vacancy Id",
+    accessor: "_id",
   },
   {
     Header: "Vacancy",
@@ -19,8 +19,8 @@ export const COLUMNS = [
     Header: "Position Type",
     accessor: "position_type",
   },
-  // {
-  //   Header: "Salary",
-  //   accessor: "salary",
-  // },
+  {
+    Header: "Salary",
+    accessor: "salary",
+  },
 ];

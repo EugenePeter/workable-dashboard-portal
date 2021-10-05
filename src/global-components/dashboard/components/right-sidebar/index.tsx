@@ -1,11 +1,11 @@
-import { RightSideBarWrapper } from '../styles';
+import { RightSideBarWrapper } from "../styles";
 
 const RightSideBar = () => {
-	return (
-		<RightSideBarWrapper>
-			<h1>RIGHT SIDEBAR</h1>
-		</RightSideBarWrapper>
-	);
+  return (
+    <RightSideBarWrapper>
+      <h3>summary</h3>
+    </RightSideBarWrapper>
+  );
 };
 
 export default RightSideBar;

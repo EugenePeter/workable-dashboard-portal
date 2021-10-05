@@ -21,16 +21,7 @@ interface FormInputProps {
   type?: string;
 }
 const FormInput: React.FC<FormInputProps> = (props) => {
-  const {
-    value,
-    placeholder,
-    label,
-    actions,
-    name,
-    current_step,
-    type,
-    accessor,
-  } = props;
+  const { value, placeholder, label, actions, name, current_step, type, accessor } = props;
   const [is_input_active, setInputActive] = useState(false);
   const [is_label_click, setLabelClick] = useState(false);
 
@@ -160,8 +151,7 @@ export const Label = styled.label<LabelProps>`
   padding: 0.2rem 0.6rem 0.2rem 0.6rem;
   margin: 0;
   z-index: 1;
-  transform: ${({ is_input_active }) =>
-    is_input_active ? `translate(.8rem, -.7rem)` : `translate(1rem, .7rem)`};
+  transform: ${({ is_input_active }) => (is_input_active ? `translate(.8rem, -.7rem)` : `translate(1rem, .5rem)`)};
   transition: transform 0.4s cubic-bezier(0.23, 0, 0, 1.01);
   &:hover {
     cursor: text;

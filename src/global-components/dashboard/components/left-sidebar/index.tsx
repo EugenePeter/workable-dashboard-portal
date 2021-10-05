@@ -3,6 +3,8 @@ import { LeftSideBarWrapper } from "../styles";
 import { Sender } from "xstate";
 import styled from "styled-components";
 
+import Branding from "./Branding";
+
 import { ProtectedRoutesActions } from "../../../../protected-routes/ProtectedRoutesProvider";
 
 export interface LeftSideBarProps {
@@ -30,7 +32,7 @@ const LeftSideBar: React.FC<LeftSideBarProps> = (props) => {
 
   return (
     <LeftSideBarWrapper className="left-side-bar-wrapper">
-      <h1>LEFT SIDE BAR</h1>
+      <Branding />
       {menus &&
         menus.map((item: any, index: any) => (
           <StyledMenu

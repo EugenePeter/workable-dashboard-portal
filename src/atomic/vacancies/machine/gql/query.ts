@@ -3,6 +3,7 @@ import { gql } from "graphql-request";
 export const GET_VACANCIES = gql`
   query GetVacancies($params: String) {
     result: getVacancies(company_id: $params) {
+      _id
       employer_questions {
         value
         keywords
