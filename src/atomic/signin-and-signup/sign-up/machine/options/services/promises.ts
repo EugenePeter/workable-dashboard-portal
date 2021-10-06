@@ -5,7 +5,8 @@ import { IRecord } from "../../types";
 
 import axios from "axios";
 
-const URL = "http://localhost:4040/registerCompany";
+// const URL = "http://localhost:4040/registerCompany";
+const URL = "https://workable-sign-up-api.herokuapp.com/registerCompany";
 
 const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
   submit:
@@ -36,6 +37,7 @@ const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
           payload: data,
         });
         console.log("SIGN UP SUBMISSION ERROR:", e.response);
+        console.error(JSON.stringify(e, undefined, 2));
       }
     },
 };
