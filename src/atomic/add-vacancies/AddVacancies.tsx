@@ -32,6 +32,8 @@ const AddVacancies = () => {
     return () => setDisplayRightSideBar(false);
   }, [setDisplayRightSideBar]);
 
+  console.log("WHAT STATS AM I ON:", state.value);
+
   return (
     <>
       <Modifiers />
