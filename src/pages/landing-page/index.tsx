@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SignIn, SignUp } from "../../atomic";
 import { Container } from "../../global-components";
 
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 import { ProtectedRoutesContext } from "../../protected-routes/ProtectedRoutesProvider";
 import styled from "styled-components";

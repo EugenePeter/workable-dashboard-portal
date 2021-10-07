@@ -1,6 +1,4 @@
-import { createContext, useEffect, useState } from "react";
-// import { useInterpret } from '@xstate/react';
-// import { spawn } from './machine/record-machine';
+import { createContext, useState } from "react";
 
 export const ProtectedRoutesContext = createContext<any | null>(null);
 export const ProtectedRoutesActions = createContext<any | null>(null);

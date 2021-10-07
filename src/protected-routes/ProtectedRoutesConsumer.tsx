@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Route } from "react-router-dom";
 import { Home, LandingPage } from "../pages";
 import { ProtectedRoutesContext } from "./ProtectedRoutesProvider";
