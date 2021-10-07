@@ -11,7 +11,12 @@ const LandingPage = () => {
   const { isSignUpSuccess } = useContext(ProtectedRoutesContext);
   console.log("isSignUpSuccess", isSignUpSuccess);
   return (
-    <Container>
+    <HeroSection
+      // style={{
+      //   backgroundImage: url(${require("./austin-distel-wawEfYdpkag-unsplash.jpg")}),
+      // }}
+      className="hero-section"
+    >
       <SignInSignUpSlot>
         <Switch>
           <Route exact path="/signin">
@@ -23,7 +28,7 @@ const LandingPage = () => {
           <Link to="/signin">sign in here</Link>
         </Switch>
       </SignInSignUpSlot>
-    </Container>
+    </HeroSection>
   );
 };
 
@@ -31,4 +36,19 @@ export default LandingPage;
 
 export const SignInSignUpSlot = styled.div`
   width: 30%;
+`;
+
+export const HeroSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  /* background-color: #b4b6b4; */
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; ;
 `;

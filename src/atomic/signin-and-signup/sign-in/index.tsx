@@ -4,6 +4,7 @@ import { useSignUp, spawn } from "./machine";
 import { StyledSignInSignUp, SignInSignUpWrapper, StyledLink } from "../styles";
 import { Modifiers } from "../../../global-styles";
 import { IContext } from "./machine/types/context";
+import { withRouter, useHistory } from "react-router";
 
 import { ProtectedRoutesActions } from "../../../protected-routes/ProtectedRoutesProvider";
 
@@ -25,12 +26,14 @@ const SignIn = () => {
   console.log(state_value);
   const { setAuthenticated, setCompanyId } = useContext(ProtectedRoutesActions);
   const token = localStorage.getItem("token");
+  const navigate = useHistory();
   useEffect(() => {
     if (results.token) {
       setAuthenticated(true);
       setCompanyId(localStorage.getItem("company_id"));
+      navigate.push("/");
     }
-  }, [results, setAuthenticated, setCompanyId]);
+  }, [results, setAuthenticated, setCompanyId, navigate]);
 
   useEffect(() => {
     console.log("TOKEN IS CALLLED:", token);
@@ -59,7 +62,6 @@ const SignIn = () => {
       <StyledSignInSignUp onSubmit={handleSubmit}>
         <SignInSignUpWrapper>
           <h4>sign in</h4>
-          {JSON.stringify(state.value)}
           {fields &&
             Object.entries(fields).map(([key, value], index: number) => (
               <FormInput
@@ -84,4 +86,4 @@ const SignIn = () => {
     </>
   );
 };
-export default SignIn;
+export default withRouter(SignIn);

@@ -53,7 +53,6 @@ const SignUp = () => {
       <Modifiers />
       <StyledSignInSignUp onSubmit={handleSubmit}>
         <SignInSignUpWrapper>
-          {JSON.stringify(state.value)}
           <h4>sign up</h4>
           {fields &&
             Object.entries(fields).map(([key, value], index: number) => (
