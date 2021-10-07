@@ -1,54 +1,71 @@
 import React, { useContext } from "react";
 import { SignIn, SignUp } from "../../atomic";
-import { Container } from "../../global-components";
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter, useHistory, useLocation } from "react-router-dom";
 
 import { ProtectedRoutesContext } from "../../protected-routes/ProtectedRoutesProvider";
-import styled from "styled-components";
+
+import {
+  Header,
+  Title,
+  SubTitle,
+  HeroRow,
+  Modifiers,
+  ContainerNarrow,
+  ButtonWrapper,
+  HeroMainButton,
+  SignInSignUpSlot,
+  HeroSection,
+} from "./styles";
 
 const LandingPage = () => {
   const { isSignUpSuccess } = useContext(ProtectedRoutesContext);
+  const navigate = useHistory();
+  //@ts-ignore
+  const URL = useLocation().pathname;
+  console.log("URL: ", URL);
   console.log("isSignUpSuccess", isSignUpSuccess);
+
+  const handleGetStarted = () => {
+    navigate.push("signin");
+  };
   return (
-    <HeroSection
-      // style={{
-      //   backgroundImage: url(${require("./austin-distel-wawEfYdpkag-unsplash.jpg")}),
-      // }}
-      className="hero-section"
-    >
-      <SignInSignUpSlot>
-        <Switch>
-          <Route exact path="/signin">
-            <SignIn />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-          <Link to="/signin">sign in here</Link>
-        </Switch>
-      </SignInSignUpSlot>
-    </HeroSection>
+    <>
+      <Modifiers />
+      <HeroSection className="hero-section">
+        <SignInSignUpSlot>
+          <Switch>
+            <Route exact path="/signin">
+              <SignIn />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
+            </Route>
+          </Switch>
+          {URL === "/" && (
+            <HeroRow>
+              <Header>
+                <Title>
+                  <h1 className="letter-spaced--wider condense">WORKABLE</h1>
+                  <h3>Your best resource in finding gigs and industry professionals</h3>
+                </Title>
+                <SubTitle>
+                  <h2 className="condense">CONNECT WITH</h2>
+                  <h1 className="letter-spaced--wider condense">2000+</h1>
+                  <h3>curated buyers and service suppliers.</h3>
+                </SubTitle>
+                <ContainerNarrow>
+                  <ButtonWrapper>
+                    <HeroMainButton onClick={handleGetStarted}>Get started</HeroMainButton>
+                  </ButtonWrapper>
+                </ContainerNarrow>
+              </Header>
+            </HeroRow>
+          )}
+        </SignInSignUpSlot>
+      </HeroSection>
+    </>
   );
 };
 
-export default LandingPage;
-
-export const SignInSignUpSlot = styled.div`
-  width: 30%;
-`;
-
-export const HeroSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 80vh;
-  /* background-color: #b4b6b4; */
-  background-color: rgba(0, 0, 0, 0.7);
-  background-blend-mode: multiply;
-
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; ;
-`;
+export default withRouter(LandingPage);

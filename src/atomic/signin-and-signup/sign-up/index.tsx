@@ -67,7 +67,7 @@ const SignUp = () => {
                 accessor="value"
               />
             ))}
-          <CleverButton full_width={true} button_type="signin">
+          <CleverButton full_width={true} button_type="signup">
             SIGNUP
           </CleverButton>
           <StyledLink to="/signin" className="margin--top">
