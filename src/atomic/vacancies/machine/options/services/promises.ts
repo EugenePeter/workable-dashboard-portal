@@ -5,7 +5,7 @@ import { IRecord } from "../../types";
 import { GraphQLClient } from "graphql-request";
 import { GET_VACANCIES } from "../../gql";
 
-import axios from "axios";
+// import axios from "axios";
 
 // const { GET_VACANCIES_API_ENDPOINT = "http://localhost:6060/graphql" } = process.env;
 

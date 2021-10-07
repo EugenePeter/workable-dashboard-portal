@@ -5,8 +5,6 @@ import config from "./config";
 import options from "./options";
 import { fields } from "./data";
 
-import { useEffect, useState } from "react";
-
 const default_context: IContext = {
   company_id: null,
   application_config: {
@@ -89,7 +87,9 @@ export const useClever = (machine: any) => {
 
 export const Interpret = (context: Partial<IContext>) => {
   const machine = spawn(context);
-  const service = interpret(machine).onTransition((state: any): any => console.log("state interpret", state.context));
+  const service = interpret(machine).onTransition((state: any): any =>
+    console.log("state interpret", state.context)
+  );
   return service;
 };
 

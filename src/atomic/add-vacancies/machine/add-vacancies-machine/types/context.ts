@@ -1,34 +1,3 @@
-// interface IParams {
-// 	record_id: string;
-// 	record_id_list: string[];
-// 	entity: string;
-// }
-
-interface IApplicationData {
-  application_list: Object[];
-}
-
-type ImenuItems = string;
-interface IActiveTab {
-  application_id: string;
-  application_name: string;
-}
-
-interface Itabs {
-  application_id: string;
-  application_name: string;
-}
-
-interface Steps {
-  step_one: [];
-  step_two: [];
-  step_three: [];
-}
-
-interface DropDownItems {
-  [key: string]: string;
-}
-
 type SelectType = "text" | "select" | "radio" | "checkbox";
 
 interface IFieldsDetails {
@@ -76,44 +45,6 @@ export interface IContext {
       };
     };
     steps: ISteps;
-    // fields_3: {};
-    // step_one: [
-    // 	{
-    // 		label: 'vacancy';
-    // 		required: true;
-    // 		place_holder: 'enter vacancy';
-    // 		name: 'vacancy';
-    // 		value: '' | null;
-    // 		field_type?: SelectType;
-    // 	},
-    // 	{
-    // 		label: 'location';
-    // 		required: true;
-    // 		place_holder: 'enter location';
-    // 		name: 'location';
-    // 		value: '' | null;
-    // 		field_type?: SelectType;
-    // 	},
-    // 	{
-    // 		label: 'position type';
-    // 		required: true;
-    // 		place_holder: 'enter position type';
-    // 		name: 'position_type';
-    // 		value: '' | null;
-    // 		field_type?: SelectType;
-    // 		items?: string[];
-    // 	},
-    // 	{
-    // 		label: 'job category';
-    // 		required: true;
-    // 		place_holder: 'enter pick job category';
-    // 		name: 'job_category';
-    // 		value: '' | null;
-    // 		field_type?: SelectType;
-    // 		items?: string[];
-    // 	}
-    // ];
-    // step_two: IFields[]
   };
   application_data: {
     field_value: {

@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable arrow-body-style */
-import { ActionFunctionMap, assign, AnyEventObject } from "xstate";
+import { ActionFunctionMap, assign } from "xstate";
 import { IContext } from "../../types";
 
 const actions: ActionFunctionMap<IContext, any> = {
@@ -91,21 +91,6 @@ const actions: ActionFunctionMap<IContext, any> = {
           },
         };
       }
-
-      // return {
-      // 	...application_data,
-      // 	field_value: {
-      // 		...application_data.field_value,
-      // 		[name]: {
-      // 			...details,
-      // 			[name]: value,
-      // 			[secondary_name]: [
-      // 				...details[secondary_name],
-      // 				keywords && keywords,
-      // 			],
-      // 		},
-      // 	},
-      // };
     },
   }),
   assignTextAreaValueToContext: assign({

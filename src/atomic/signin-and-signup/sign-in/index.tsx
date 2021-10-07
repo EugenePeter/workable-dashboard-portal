@@ -22,7 +22,7 @@ const SignIn = () => {
   const { application_config = {}, application_data = {} } = context ?? {};
   const { fields } = (application_config as IContext["application_config"]) ?? {};
   const { field_value = {}, results } = application_data ?? {};
-
+  console.log(state_value);
   const { setAuthenticated, setCompanyId } = useContext(ProtectedRoutesActions);
   const token = localStorage.getItem("token");
   useEffect(() => {

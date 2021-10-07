@@ -21,15 +21,7 @@ interface FormInputProps {
   subtitle?: string;
 }
 const CleverKeywordSelector: React.FC<FormInputProps> = (props) => {
-  const {
-    value,
-    placeholder,
-    label,
-    actions,
-    name,
-    current_step,
-    secondary_name = "",
-  } = props;
+  const { placeholder, label, actions, name, current_step, secondary_name = "" } = props;
   const [is_input_active, setInputActive] = useState(false);
   const [is_label_click, setLabelClick] = useState(false);
 
