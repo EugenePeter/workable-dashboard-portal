@@ -7,8 +7,11 @@ import { GET_VACANCIES } from "../../gql";
 
 import axios from "axios";
 
-const { GET_VACANCIES_API_ENDPOINT = "http://localhost:6060/graphql" } = process.env;
-const { GET_VACANCIES_API_ENDPOINT2 = "http://localhost:6060/vacancies" } = process.env;
+// const { GET_VACANCIES_API_ENDPOINT = "http://localhost:6060/graphql" } = process.env;
+
+const { GET_VACANCIES_API_ENDPOINT = "https://workable-get-vacancies.herokuapp.com/graphql" } =
+  process.env;
+// const { GET_VACANCIES_API_ENDPOINT2 = "http://localhost:6060/vacancies" } = process.env;
 
 const graphql = new GraphQLClient(GET_VACANCIES_API_ENDPOINT, {
   headers: {},

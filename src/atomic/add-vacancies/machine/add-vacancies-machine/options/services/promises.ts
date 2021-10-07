@@ -9,7 +9,7 @@ import { ADD_VACANCIES } from "../../gql";
 const { ADD_VACANCIES_API_ENDPOINT = "http://localhost:5050/graphql" } = process.env;
 // authorization: `Basic ${encodeBase64(`${BASIC_AUTH_USERNAME}:${BASIC_AUTH_PASSWORD}`)}`,
 
-const graphql = new GraphQLClient("http://localhost:5050/graphql", {
+const graphql = new GraphQLClient("https://workable-add-vacancies.herokuapp.com/graphql", {
   headers: {},
 });
 
