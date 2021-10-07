@@ -19,6 +19,10 @@ export const SignInSignUpWrapper = styled.form`
   display: flex;
   flex-direction: column;
   width: 80%;
+
+  p {
+    margin-top: 1rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`

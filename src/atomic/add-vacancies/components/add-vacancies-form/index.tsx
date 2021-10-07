@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { StepOne, StepThree, StepTwo, StepFour, StepFive, StepSix } from "../steps";
 
 import { AddVacanciesContext } from "../../AddVacanciesProvider";
+import { Submitting } from "../../../../global-components";
 
 interface IAddVacanciesForm {
   state: any;
@@ -84,7 +85,7 @@ const AddVacanciesForm: React.FC<IAddVacanciesForm> = () => {
       )}
       {state.matches("ready.submit") && (
         <>
-          <h1>SUBMIT</h1>
+          <Submitting />
         </>
       )}
     </>

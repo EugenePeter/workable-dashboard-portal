@@ -8,6 +8,8 @@ import { StyledSignInSignUp, SignInSignUpWrapper, StyledLink } from "../styles";
 import { Modifiers } from "../../../global-styles";
 import { IContext } from "./machine/types/context";
 
+import { Loader } from "../../../global-components";
+
 export interface data {
   value: string;
   name?: string;
@@ -54,7 +56,14 @@ const SignUp = () => {
       <Modifiers />
       <StyledSignInSignUp onSubmit={handleSubmit}>
         <SignInSignUpWrapper>
-          <h4>sign up</h4>
+          {state.matches("ready.submitting") ? (
+            <>
+              <Loader />
+              <p>just a moment</p>
+            </>
+          ) : (
+            <h4>sign up</h4>
+          )}
           {fields &&
             Object.entries(fields).map(([key, value], index: number) => (
               <FormInput

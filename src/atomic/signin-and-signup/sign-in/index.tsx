@@ -8,6 +8,8 @@ import { withRouter, useHistory } from "react-router";
 
 import { ProtectedRoutesActions } from "../../../protected-routes/ProtectedRoutesProvider";
 
+import { Loader } from "../../../global-components";
+
 export interface data {
   value: string;
   name?: string;
@@ -62,7 +64,14 @@ const SignIn = () => {
       <Modifiers />
       <StyledSignInSignUp onSubmit={handleSubmit}>
         <SignInSignUpWrapper>
-          <h4>sign in</h4>
+          {state.matches("ready.submitting") ? (
+            <>
+              <Loader />
+              <p>just a moment</p>
+            </>
+          ) : (
+            <h4>sign in</h4>
+          )}
           {fields &&
             Object.entries(fields).map(([key, value], index: number) => (
               <FormInput

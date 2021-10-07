@@ -1,6 +1,8 @@
 import { useMemo, useContext } from "react";
 import { useTable } from "react-table";
 import { VacanciesContext } from "../../VacanciesProvider";
+// import { CleverTabs } from "../../../../global-components";
+import { Loader } from "../../../../global-components";
 
 import { COLUMNS } from "./columns";
 
@@ -19,10 +21,6 @@ const CleverTable = () => {
       };
     });
 
-  // const result = transformData(vacancies);
-
-  // console.log("TEST:", result);
-
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => transformData(vacancies), [vacancies]);
   const tableInstance = useTable({
@@ -33,59 +31,72 @@ const CleverTable = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {
-          // Loop over the header rows
-          headerGroups.map((headerGroup) => (
-            // Apply the header row props
-            <tr {...headerGroup.getHeaderGroupProps()}>
+    <>
+      <table {...getTableProps()}>
+        {vacancies.length > 0 ? (
+          <>
+            <thead>
               {
-                // Loop over the headers in each row
-                headerGroup.headers.map((column) => (
-                  // Apply the header cell props
-                  <th {...column.getHeaderProps()}>
+                // Loop over the header rows
+                headerGroups.map((headerGroup) => (
+                  // Apply the header row props
+                  <tr {...headerGroup.getHeaderGroupProps()}>
                     {
-                      // Render the header
-                      column.render("Header")
+                      // Loop over the headers in each row
+                      headerGroup.headers.map((column) => (
+                        // Apply the header cell props
+                        <th {...column.getHeaderProps()}>
+                          {
+                            // Render the header
+                            column.render("Header")
+                          }
+                        </th>
+                      ))
                     }
-                  </th>
+                  </tr>
                 ))
               }
-            </tr>
-          ))
-        }
-      </thead>
-      {/* Apply the table body props */}
-      <tbody {...getTableBodyProps()}>
-        {
-          // Loop over the table rows
-          rows.map((row) => {
-            // Prepare the row for display
-            prepareRow(row);
-            return (
-              // Apply the row props
-              <tr {...row.getRowProps()}>
-                {
-                  // Loop over the rows cells
-                  row.cells.map((cell) => {
-                    // Apply the cell props
-                    return (
-                      <td {...cell.getCellProps()}>
-                        {
-                          // Render the cell contents
-                          cell.render("Cell")
-                        }
-                      </td>
-                    );
-                  })
-                }
-              </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
+            </thead>
+            {/* Apply the table body props */}
+            <tbody {...getTableBodyProps()}>
+              {
+                // Loop over the table rows
+                rows.map((row) => {
+                  // Prepare the row for display
+                  prepareRow(row);
+                  return (
+                    // Apply the row props
+                    <tr {...row.getRowProps()}>
+                      {
+                        // Loop over the rows cells
+                        row.cells.map((cell) => {
+                          // Apply the cell props
+                          return (
+                            <td
+                              {...cell.getCellProps()}
+                              onClick={() => console.log("ROW CLICKED:", cell.row.values)}
+                            >
+                              {
+                                // Render the cell contents
+                                cell.render("Cell")
+                              }
+                            </td>
+                          );
+                        })
+                      }
+                    </tr>
+                  );
+                })
+              }
+            </tbody>
+          </>
+        ) : (
+          <p style={{ textAlign: "center" }}>
+            <Loader />
+          </p>
+        )}
+      </table>
+    </>
   );
 };
 
