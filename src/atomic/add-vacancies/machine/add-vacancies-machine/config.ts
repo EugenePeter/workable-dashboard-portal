@@ -131,7 +131,7 @@ const config: MachineConfig<IContext, AnyStateNodeDefinition, IMachineEvents> = 
           },
           on: {
             SUCCESS: {
-              actions: ["assignResultsToContext"],
+              actions: ["assignResultsToContext", (_: any, e) => console.log("INSERT SUCCESS:")],
               target: "submitted",
             },
             ERROR: {

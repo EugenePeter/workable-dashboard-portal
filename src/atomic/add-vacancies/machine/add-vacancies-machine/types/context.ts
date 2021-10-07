@@ -61,7 +61,12 @@ export interface IContext {
       skills_and_qualifications: SkillsAndQualifications | null;
       employer_questions: EmployerQuestions | null;
     };
+    results?: AddVacancyResults;
   };
+}
+
+export interface AddVacancyResults {
+  [key: string]: string;
 }
 
 interface JobDescription {

@@ -63,6 +63,7 @@ const default_context: IContext = {
         keywords: [],
       },
     },
+    results: {},
   },
 };
 

@@ -91,6 +91,15 @@ const actions: ActionFunctionMap<IContext, any> = {
       };
     },
   }),
+  assignResultsToContext: assign({
+    application_data: ({ application_data }, { payload }) => {
+      console.log("GOT RESULTS");
+      return {
+        ...application_data,
+        results: payload,
+      };
+    },
+  }),
 };
 
 export default actions;

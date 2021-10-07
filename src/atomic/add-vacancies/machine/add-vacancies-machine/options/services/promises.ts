@@ -32,6 +32,7 @@ const services: IRecord<ServiceConfig<IContext, IMachineEvents>> = {
       if (result.success)
         send({
           type: "SUCCESS",
+          payload: result,
         });
     } catch (error) {
       console.error(JSON.stringify(error, undefined, 2));
