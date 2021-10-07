@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { SignIn, SignUp } from "../../atomic";
 
-import { Switch, Route, Link, withRouter, useHistory, useLocation } from "react-router-dom";
+import { Switch, Route, withRouter, useHistory, useLocation } from "react-router-dom";
 
 import { ProtectedRoutesContext } from "../../protected-routes/ProtectedRoutesProvider";
 

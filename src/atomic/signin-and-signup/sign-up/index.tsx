@@ -25,6 +25,7 @@ const SignUp = () => {
   const { fields } = (application_config as IContext["application_config"]) ?? {};
   const { field_value = {}, results } = application_data ?? {};
   console.log(state_value);
+  console.log(state);
   const navigate = useHistory();
 
   useEffect(() => {

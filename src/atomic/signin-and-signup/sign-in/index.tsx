@@ -27,6 +27,7 @@ const SignIn = () => {
   const { setAuthenticated, setCompanyId } = useContext(ProtectedRoutesActions);
   const token = localStorage.getItem("token");
   const navigate = useHistory();
+  console.log(state);
   useEffect(() => {
     if (results.token) {
       setAuthenticated(true);
