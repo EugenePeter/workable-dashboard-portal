@@ -122,7 +122,16 @@ export const Modifiers = createGlobalStyle`
 `;
 
 export const SignInSignUpSlot = styled.div`
-  width: 30%;
+  width: 96%;
+  @media screen and (min-width: 992px) {
+    width: 30% !important;
+  }
+  @media screen and (min-width: 576px) {
+    width: 60%;
+  }
+  /* @media screen and (min-width: 375px) {
+    width: 90%;
+  } */
 `;
 
 export const HeroSection = styled.div`
